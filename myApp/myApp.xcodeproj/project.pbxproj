@@ -13,6 +13,7 @@
 		07434DCE1F13E978007E5502 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07434DCC1F13E978007E5502 /* LaunchScreen.storyboard */; };
 		07434DDB1F141D3E007E5502 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07434DDA1F141D3E007E5502 /* SearchPageController.swift */; };
 		07434DDF1F142517007E5502 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07434DDE1F142517007E5502 /* ResultsController.swift */; };
+		07434DE21F153346007E5502 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07434DE11F153346007E5502 /* ResultsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		07434DCF1F13E978007E5502 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07434DDA1F141D3E007E5502 /* SearchPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		07434DDE1F142517007E5502 /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		07434DE11F153346007E5502 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				07434DD81F13EB71007E5502 /* Supporting Files */,
 				07434DD71F13EB51007E5502 /* Storyboards */,
 				07434DD51F13EB16007E5502 /* View Controllers */,
+				07434DE01F153307007E5502 /* Views */,
 			);
 			path = myApp;
 			sourceTree = "<group>";
@@ -97,6 +100,14 @@
 			children = (
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		07434DE01F153307007E5502 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				07434DE11F153346007E5502 /* ResultsTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 			files = (
 				07434DC41F13E978007E5502 /* AppDelegate.swift in Sources */,
 				07434DDB1F141D3E007E5502 /* SearchPageController.swift in Sources */,
+				07434DE21F153346007E5502 /* ResultsTableViewCell.swift in Sources */,
 				07434DDF1F142517007E5502 /* ResultsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
