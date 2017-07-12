@@ -10,6 +10,10 @@ import UIKit
 
 class SearchPageController: UIViewController {
     
+    @IBOutlet weak var budgetTextField: UITextField!
+    
+    @IBOutlet weak var foodItemTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
