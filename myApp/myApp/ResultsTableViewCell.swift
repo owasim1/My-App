@@ -10,6 +10,9 @@ import UIKit
 
 class ResultsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var nameOfRestaurantLabel: UILabel!
+    @IBOutlet weak var restaurantTypeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -22,5 +25,7 @@ class ResultsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+
 
 }
