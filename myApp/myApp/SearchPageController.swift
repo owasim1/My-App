@@ -16,6 +16,7 @@ class SearchPageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        budgetTextField.keyboardType = UIKeyboardType.numberPad
     }
+    
 }

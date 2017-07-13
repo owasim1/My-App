@@ -42,8 +42,7 @@
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8it-qj-vll">
                                                                 <rect key="frame" x="0.0" y="30.333333333333343" width="180" height="30"/>
-                                                                <color key="textColor" red="0.74064604213354079" green="0.77838213725208261" blue="0.82302902918781728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <nil key="textColor"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
@@ -59,7 +58,7 @@
                                                             </label>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Optional" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecl-ud-oP6">
                                                                 <rect key="frame" x="0.0" y="50.666666666666657" width="180" height="30"/>
-                                                                <color key="textColor" red="0.74064604213354079" green="0.77838213725208261" blue="0.82302902918781728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
