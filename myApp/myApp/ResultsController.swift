@@ -10,16 +10,21 @@ import UIKit
 
 class ResultsController: UITableViewController {
     
+    var results = [Result]()
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return results.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultsTableViewCell", for: indexPath) as! ResultsTableViewCell
         
-
-        cell.nameOfRestaurantLabel.text = "name of restuarant"
+        let row = indexPath.row
+        
+        let result = results[row]
+        
+        cell.nameOfRestaurantLabel.text = result.nameOfRestuarant
         cell.restaurantTypeLabel.text = "restaurant type"
         cell.distanceLabel.text = "distance"
         

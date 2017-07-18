@@ -43,7 +43,11 @@
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8it-qj-vll">
                                                                 <rect key="frame" x="0.0" y="30.333333333333343" width="180" height="30"/>
                                                                 <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="budgetTextFieldUsed:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="okn-3x-yjk"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -79,6 +83,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="findButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AyQ-iD-euM"/>
                                             <segue destination="Vao-GZ-xa0" kind="show" identifier="toResultsPage" id="nl9-hY-yi6"/>
                                         </connections>
                                     </button>
@@ -98,6 +103,7 @@
                     </view>
                     <connections>
                         <outlet property="budgetTextField" destination="8it-qj-vll" id="yxp-1Z-kVs"/>
+                        <outlet property="findButton" destination="cyw-pa-Fea" id="JYu-bD-RsI"/>
                         <outlet property="foodItemTextField" destination="ecl-ud-oP6" id="FHM-B9-IGb"/>
                     </connections>
                 </viewController>
