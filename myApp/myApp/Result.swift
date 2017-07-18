@@ -8,10 +8,14 @@
 
 import UIKit
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class Result {
     
     var nameOfRestaurant = ""
     var restaurantType = ""
     var distance = ""
+    
+
 }

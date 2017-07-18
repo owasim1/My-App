@@ -8,7 +8,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>App needs location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App needs location</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>googlechromes</string>

@@ -13,7 +13,7 @@ class ResultsController: UITableViewController {
     var results = [Result]()
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -24,9 +24,10 @@ class ResultsController: UITableViewController {
         
         let result = results[row]
         
-        cell.nameOfRestaurantLabel.text = result.nameOfRestuarant
-        cell.restaurantTypeLabel.text = "restaurant type"
-        cell.distanceLabel.text = "distance"
+        cell.nameOfRestaurantLabel.text = result.nameOfRestaurant
+        cell.restaurantTypeLabel.text = result.restaurantType
+        cell.distanceLabel.text = result.distance
+        
         
         return cell
     }

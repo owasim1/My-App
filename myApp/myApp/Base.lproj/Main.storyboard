@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nwo-yv-JZv">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="XzQ-Nz-UNS">
-                                <rect key="frame" x="117" y="106" width="180" height="211"/>
+                                <rect key="frame" x="117" y="150" width="180" height="211"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PUZ-h9-4Su">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="151"/>
@@ -35,7 +35,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="180" height="60.333333333333343"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your budget:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fV-nu-wTl">
-                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="20.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="20.333333333333343"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -101,6 +101,7 @@
                             <constraint firstItem="XzQ-Nz-UNS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="86" id="l79-h7-vWg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="c0c-BH-qkL"/>
                     <connections>
                         <outlet property="budgetTextField" destination="8it-qj-vll" id="yxp-1Z-kVs"/>
                         <outlet property="findButton" destination="cyw-pa-Fea" id="JYu-bD-RsI"/>
@@ -109,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1024.6376811594205" y="122.28260869565219"/>
         </scene>
         <!--Results Controller-->
         <scene sceneID="iqM-gW-QFn">
@@ -124,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="18x-wn-WAj" id="6b2-Z2-Lub">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQ4-qf-4xX">
@@ -166,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSb-fr-SQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="909.60000000000002" y="122.78860569715144"/>
+            <point key="canvasLocation" x="1815.9420289855075" y="122.28260869565219"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tMc-ex-8V0">
@@ -184,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v5-bM-BIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="123"/>
+            <point key="canvasLocation" x="2668.1159420289855" y="122.28260869565219"/>
         </scene>
         <!--Places View Controller-->
         <scene sceneID="1rz-UE-Kbj">
@@ -202,7 +203,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9o6-Yh-bFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2614" y="122"/>
+            <point key="canvasLocation" x="3520.289855072464" y="121.46739130434784"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bzp-ck-feq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nwo-yv-JZv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rzK-on-Eer">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9r2-V3-jTe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Go8-1A-pJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.39130434782609" y="122.28260869565219"/>
         </scene>
     </scenes>
 </document>
