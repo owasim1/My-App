@@ -23,9 +23,7 @@ class MenuItem {
     init?(json: JSON) {
         guard let key = json["apiKey"].string,
         let name = json["name"].string,
-        let price = json["basePrice"].double,
-        let price =< (your price)
-            else {
+        let price = json["basePrice"].double else{
             return
         }
         
