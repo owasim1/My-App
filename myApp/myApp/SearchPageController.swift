@@ -9,12 +9,11 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class SearchPageController: UIViewController {
     
-    let apiToken = "11443211f14e75a5"
     
-    let baseSearchURL = "https://api.eatstreet.com/publicapi/v1/restaurant/search"
     
 
     
@@ -49,21 +48,19 @@ class SearchPageController: UIViewController {
         
         budgetTextField.keyboardType = UIKeyboardType.numberPad
         
-        let headers: HTTPHeaders = ["X-Access-Token": self.apiToken]
+        let coordinates = CLLocationCoordinate2D(latitude: 37.773387, longitude: -122.417622)
         
-        let params: Parameters = ["street-address" : "Make School, San Fransisco", "method": "both"]
-        
-        APIManager.getRestaurants(withURL: baseSearchURL, parameters: params, headers: headers) { (restaurants) in
-            
+        APIManager.getRestaurants(forCoordinates: coordinates) { (restaurants) in
             self.restaurants = restaurants
             
             //revise High Order Functions Homework
             let restaurantKeys = restaurants.map{ $0.key }
-
+            
             //index is 0 to number of restaurant keys\restaurants
             for index in 0..<restaurantKeys.count {
                 //each restaurant key is used to get menuCategories of each restaurant menu
-                APIManager.getMenuCategories(forKey: restaurantKeys[index], headers: headers, completionHandler: { (menuCategories) in
+                
+                APIManager.getMenuCategories(forRestaurantKey: restaurantKeys[index], underBudget: 5.00, completionHandler: { (menuCategories) in
                     
                     //each menu category of each restaurant's menu is stored in menuCategories property of restaurants
                     restaurants[index].menuCategories = menuCategories
@@ -80,13 +77,22 @@ class SearchPageController: UIViewController {
                             //assigning each item in category to restaurantsMenuCategoryItem of type [MenuItem]
                             self.restaurantsMenuCategoryItems = [restaurants[index].menuCategories?[categoryIndex].items![itemIndex]]
                             print("\(self.restaurantsMenuCategoryItems[0].name) \(self.restaurantsMenuCategoryItems[0].price)")
+                            
                         }
                     }
                 })
+
             }
             
             print("Do something with restaurant keys")
         }
+
     }
+    
+    
+    
+    
 }
+
+
 

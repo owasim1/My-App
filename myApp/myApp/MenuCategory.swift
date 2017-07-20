@@ -16,7 +16,7 @@ class MenuCategory {
 
     var items: [MenuItem]?
     
-    init?(json: JSON) {
+    init?(usingJSON json: JSON, underBudget budget: Double) {
         
         
         guard let key = json["apiKey"].string,
@@ -28,8 +28,10 @@ class MenuCategory {
 
         if let itemsJSON = json["items"].array {
             for itemJSON in itemsJSON {
-                let menuItem = MenuItem(json: itemJSON)
-                menuItems.append(menuItem!)
+                if budget >= itemJSON["basePrice"].doubleValue {
+                    let menuItem = MenuItem(json: itemJSON)
+                    menuItems.append(menuItem!)
+                }
             }
         }
         

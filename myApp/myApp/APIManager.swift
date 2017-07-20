@@ -9,19 +9,33 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 class APIManager {
+
+    static let apiToken = "11443211f14e75a5"
+
     
-    static func getRestaurants(withURL url: String, parameters: Parameters, headers: HTTPHeaders,  completionHandler: @escaping ([Restaurant]) -> Void) {
+    static func getRestaurants(forCoordinates coordinates: CLLocationCoordinate2D, completionHandler: @escaping ([Restaurant]) -> Void) {
         
-        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseData { (response) in
+        
+        let baseSearchURL = "https://api.eatstreet.com/publicapi/v1/restaurant/search"
+        
+
+        let headers: HTTPHeaders = ["X-Access-Token": APIManager.apiToken]
+
+        let params: Parameters = ["street-address" : "Make School, San Fransisco", "method": "both"]
+        
+        let parameters: Parameters = ["longitude": coordinates.longitude, "latitute": coordinates.latitude, "method": "both"]
+        
+        Alamofire.request(baseSearchURL, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers).responseData { (response) in
             let json = JSON(with: response.data!)
             
             if let restaurantsJSON = json["restaurants"].array {
                 
                 
                 //create array for keys
-                var restaurantKeysArray = [String]()
+//                var restaurantKeysArray = [String]()
                 var restaurants = [Restaurant]()
                 
                 //iterate through every restaurant to get a key
@@ -48,12 +62,12 @@ class APIManager {
         
     }
     
-    static func getMenuCategories(forKey key: String, headers: HTTPHeaders, completionHandler: @escaping ([MenuCategory]) -> Void) {
-        
-        var url = ""
-        
+    static func getMenuCategories(forRestaurantKey key: String, underBudget budget: Double, completionHandler: @escaping ([MenuCategory]) -> Void) {
 
-        url = "https://api.eatstreet.com/publicapi/v1/restaurant/\(key)/menu"
+        let url = "https://api.eatstreet.com/publicapi/v1/restaurant/\(key)/menu"
+        
+        let headers: HTTPHeaders = ["X-Access-Token": APIManager.apiToken]
+        
 
         Alamofire.request(url, method: .get, encoding: URLEncoding.default, headers: headers).responseData(completionHandler: { (response) in
             let json = JSON(with: response.data!)
@@ -62,10 +76,11 @@ class APIManager {
                 return
             }
             
+            
             var menuCategories = [MenuCategory]()
 
             for menuCategoryJSON in menuCategoriesJSON {
-                if let menuCategory = MenuCategory(json: menuCategoryJSON) {
+                if let menuCategory = MenuCategory(usingJSON: menuCategoryJSON, underBudget: budget) {
                     menuCategories.append(menuCategory)
                 }
             }
