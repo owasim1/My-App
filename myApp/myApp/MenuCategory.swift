@@ -11,10 +11,15 @@ import SwiftyJSON
 
 class MenuCategory {
     
-    var key: String = ""
-    var name: String = ""
+    var key = String()
+    var name = String()
 
     var items: [MenuItem]?
+    
+    init(key: String, name: String) {
+        self.key = key
+        self.name = name
+    }
     
     init?(usingJSON json: JSON, underBudget budget: Double) {
         
@@ -34,12 +39,13 @@ class MenuCategory {
                 }
             }
         }
-        
-        self.key = key
-        self.name = name
         self.items = menuItems
+        if (self.items?.count)! > 0{
+            self.key = key
+            self.name = name
+        } else {
+           return
       
     }
-    
-    
+  }
 }

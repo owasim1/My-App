@@ -13,13 +13,6 @@ import CoreLocation
 
 class SearchPageController: UIViewController {
     
-    
-    
-
-    
-    
-    
-    
     @IBOutlet weak var budgetTextField: UITextField!
     
     @IBAction func budgetTextFieldFull(_ sender: Any) {
@@ -32,65 +25,88 @@ class SearchPageController: UIViewController {
     @IBOutlet weak var findButton: UIButton!
     
     
-    var restaurants = [Restaurant]()
+    var restaurants = [Restaurant]() {
+        didSet {
+            print("Works!!!")
+        }
+    }
     
     var restaurantsMenuCategoryItems = [MenuItem!]()
     
     @IBAction func findButtonTapped(_ sender: Any) {
-        
-        
-        
+        performSegue(withIdentifier: "toResultsPage", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "toResultsPage"
+        {
+            let destinationController = segue.destination as! ResultsController
+            
+            destinationController.results = restaurants
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getFinalResults()
+        
+
+    
+    }
+    
+    func getFinalResults() {
+        
+        
         
         budgetTextField.keyboardType = UIKeyboardType.numberPad
         
         let coordinates = CLLocationCoordinate2D(latitude: 37.773387, longitude: -122.417622)
-        
-        APIManager.getRestaurants(forCoordinates: coordinates) { (restaurants) in
-            self.restaurants = restaurants
+   
+        let dispatchGroup = DispatchGroup()
+        APIManager.getRestaurants(forCoordinates: coordinates) { (allRestaurantsJSON) in
+            //            self.restaurants = allRestaurants
             
-            //revise High Order Functions Homework
-            let restaurantKeys = restaurants.map{ $0.key }
+            var restaurantsArray = [Restaurant]()
             
-            //index is 0 to number of restaurant keys\restaurants
-            for index in 0..<restaurantKeys.count {
-                //each restaurant key is used to get menuCategories of each restaurant menu
+            
+            //loop through the restaurants json array
+            for index in 0..<allRestaurantsJSON.count {
+                dispatchGroup.enter()
+                let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
                 
-                APIManager.getMenuCategories(forRestaurantKey: restaurantKeys[index], underBudget: 5.00, completionHandler: { (menuCategories) in
+
+                
+                APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: 2.00, completionHandler: { (menuCategories) in
                     
-                    //each menu category of each restaurant's menu is stored in menuCategories property of restaurants
-                    restaurants[index].menuCategories = menuCategories
-                    print()
-                    print(restaurants[index].name)
-                    print()
-                    //index is 0 to number of menuCategories for each restaurant
-                    for categoryIndex in 0..<restaurants[index].menuCategories!.count{
-                        print()
-                        print(restaurants[index].menuCategories![categoryIndex].name)
-                        print()
-                        //index is 0 to number of items in the category
-                        for itemIndex in 0..<restaurants[index].menuCategories![categoryIndex].items!.count{
-                            //assigning each item in category to restaurantsMenuCategoryItem of type [MenuItem]
-                            self.restaurantsMenuCategoryItems = [restaurants[index].menuCategories?[categoryIndex].items![itemIndex]]
-                            print("\(self.restaurantsMenuCategoryItems[0].name) \(self.restaurantsMenuCategoryItems[0].price)")
+                    
+                    outerloop: for menuCategory in menuCategories{
+                        if menuCategory.name != "" {
+                            let restaurant = Restaurant(json: allRestaurantsJSON[index])
+                            restaurant?.menuCategories.append(menuCategory)
+                            restaurantsArray.append(restaurant!)
+                            break outerloop
+                            //if at least one menu category is not empty, it is enough, we have to create a restaurant, so quit the category loop, and go check next restaurant
                             
                         }
                     }
-                })
+                    
+                    dispatchGroup.leave()
 
+                })
             }
             
-            print("Do something with restaurant keys")
+            
+            
+            dispatchGroup.notify(queue: .main, execute: { 
+                self.restaurants = restaurantsArray
+            })
+ 
         }
-
+        
+        
     }
-    
-    
-    
     
 }
 

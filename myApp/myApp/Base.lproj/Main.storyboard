@@ -84,7 +84,6 @@
                                         </state>
                                         <connections>
                                             <action selector="findButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AyQ-iD-euM"/>
-                                            <segue destination="Vao-GZ-xa0" kind="show" identifier="toResultsPage" id="nl9-hY-yi6"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -106,6 +105,7 @@
                         <outlet property="budgetTextField" destination="8it-qj-vll" id="yxp-1Z-kVs"/>
                         <outlet property="findButton" destination="cyw-pa-Fea" id="JYu-bD-RsI"/>
                         <outlet property="foodItemTextField" destination="ecl-ud-oP6" id="FHM-B9-IGb"/>
+                        <segue destination="Vao-GZ-xa0" kind="show" identifier="toResultsPage" id="ll7-IZ-0Ay"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -210,7 +210,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nwo-yv-JZv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rzK-on-Eer">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rzK-on-Eer">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

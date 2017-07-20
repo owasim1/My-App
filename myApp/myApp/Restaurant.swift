@@ -10,18 +10,22 @@
 import Foundation
 import SwiftyJSON
 
-class Restaurant {
+class Restaurant: Result {
     
     var key: String = ""
     var name: String = ""
-    var menuCategories: [MenuCategory]?
+    var menuCategories = [MenuCategory]()
     
     init(key: String, name: String) {
+        super.init()
+        
         self.name = name
         self.key = key
     }
     
     init?(json: JSON) {
+        super.init()
+        
         guard let keyFromJSON = json["apiKey"].string,
             let nameFromJSON = json["name"].string else {
             return
@@ -29,6 +33,7 @@ class Restaurant {
         
         self.key = keyFromJSON
         self.name = nameFromJSON
+        super.nameOfRestaurant = self.name
 
     }
     

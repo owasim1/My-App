@@ -10,7 +10,8 @@ import UIKit
 
 class ResultsController: UITableViewController {
     
-    var results = [Result]()
+    var results = [Restaurant]()
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
@@ -24,9 +25,9 @@ class ResultsController: UITableViewController {
         
         let result = results[row]
         
-        cell.nameOfRestaurantLabel.text = result.nameOfRestaurant
+        cell.nameOfRestaurantLabel.text = result.name
         cell.restaurantTypeLabel.text = result.restaurantType
-        cell.distanceLabel.text = result.distance
+        cell.distanceLabel.text = String(result.distance)
         
         
         return cell
