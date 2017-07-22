@@ -44,7 +44,7 @@
                                                                 <rect key="frame" x="0.0" y="30.333333333333343" width="180" height="30"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                                 <connections>
                                                                     <action selector="budgetTextFieldFull:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="xuK-41-9yY"/>
                                                                 </connections>
@@ -155,7 +155,6 @@
                                     <outlet property="distanceLabel" destination="CDu-9i-9oY" id="rb0-1K-Ebs"/>
                                     <outlet property="nameOfRestaurantLabel" destination="yQ4-qf-4xX" id="ygU-Kw-2vo"/>
                                     <outlet property="restaurantTypeLabel" destination="6ix-ko-Ecu" id="gdL-YS-38P"/>
-                                    <segue destination="617-oR-PX7" kind="show" id="i1w-04-VZv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -164,6 +163,9 @@
                             <outlet property="delegate" destination="Vao-GZ-xa0" id="xrv-uw-jyD"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="pnK-cO-SYC" kind="show" identifier="toTheRestaurantMenu" id="vNP-gy-n0s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSb-fr-SQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,6 +188,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v5-bM-BIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2668.1159420289855" y="122.28260869565219"/>
+        </scene>
+        <!--Display Restaurant Menu Controller-->
+        <scene sceneID="pOa-pf-bKG">
+            <objects>
+                <viewController id="pnK-cO-SYC" customClass="DisplayRestaurantMenuController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SuO-RH-pQP"/>
+                        <viewControllerLayoutGuide type="bottom" id="JCA-ND-Kax"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LaU-J7-iby">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKD-KI-hQy">
+                                <rect key="frame" x="20" y="72" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWU-pw-Jeu">
+                                <rect key="frame" x="20" y="109" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fKD-KI-hQy" firstAttribute="leading" secondItem="LaU-J7-iby" secondAttribute="leadingMargin" id="4zi-JX-qsd"/>
+                            <constraint firstItem="dWU-pw-Jeu" firstAttribute="leading" secondItem="LaU-J7-iby" secondAttribute="leadingMargin" id="BOE-w8-J5V"/>
+                            <constraint firstItem="dWU-pw-Jeu" firstAttribute="top" secondItem="fKD-KI-hQy" secondAttribute="bottom" constant="16" id="gyS-aB-zsp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dWU-pw-Jeu" secondAttribute="trailing" id="lOa-7X-fyb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fKD-KI-hQy" secondAttribute="trailing" id="pbE-rY-yLX"/>
+                            <constraint firstItem="fKD-KI-hQy" firstAttribute="top" secondItem="SuO-RH-pQP" secondAttribute="bottom" constant="8" id="yCY-iO-QtF"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="restaurantTitleLabel" destination="fKD-KI-hQy" id="PV6-zW-0Ja"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVK-1u-pLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815.9420289855075" y="869.83695652173924"/>
         </scene>
         <!--Places View Controller-->
         <scene sceneID="1rz-UE-Kbj">

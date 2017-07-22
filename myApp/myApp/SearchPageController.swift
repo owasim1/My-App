@@ -16,8 +16,6 @@ class SearchPageController: UIViewController {
     @IBOutlet weak var budgetTextField: UITextField!
     
     @IBAction func budgetTextFieldFull(_ sender: Any) {
-        print("your budget")
-        
     }
     
     @IBOutlet weak var foodItemTextField: UITextField!
@@ -25,16 +23,20 @@ class SearchPageController: UIViewController {
     @IBOutlet weak var findButton: UIButton!
     
     
-    var restaurants = [Restaurant]() {
-        didSet {
-            print("Works!!!")
-        }
-    }
+    var restaurants = [Restaurant]()
     
     var restaurantsMenuCategoryItems = [MenuItem!]()
     
     @IBAction func findButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "toResultsPage", sender: self)
+
+        findButton.isUserInteractionEnabled = false
+        
+        getFinalResults { (didComplete) in
+            if didComplete
+            {
+                self.performSegue(withIdentifier: "toResultsPage", sender: self)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -49,60 +51,60 @@ class SearchPageController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getFinalResults()
-        
-
-    
+            
     }
     
-    func getFinalResults() {
-        
-        
-        
+    override func viewDidAppear(_ animated: Bool)
+    {
+        findButton.isUserInteractionEnabled = true
+    }
+
+    func getFinalResults(completionHandler: @escaping (Bool) -> Void) {
+
         budgetTextField.keyboardType = UIKeyboardType.numberPad
         
-        let coordinates = CLLocationCoordinate2D(latitude: 37.773387, longitude: -122.417622)
-   
+        let coordinates = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0059)
+        
         let dispatchGroup = DispatchGroup()
         APIManager.getRestaurants(forCoordinates: coordinates) { (allRestaurantsJSON) in
             //            self.restaurants = allRestaurants
             
             var restaurantsArray = [Restaurant]()
-            
-            
+
             //loop through the restaurants json array
             for index in 0..<allRestaurantsJSON.count {
                 dispatchGroup.enter()
+                
                 let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
                 
-
-                
-                APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: 2.00, completionHandler: { (menuCategories) in
+                APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, completionHandler: { (menuCategories) in
                     
                     
-                    outerloop: for menuCategory in menuCategories{
+                    for menuCategory in menuCategories {
                         if menuCategory.name != "" {
-                            let restaurant = Restaurant(json: allRestaurantsJSON[index])
-                            restaurant?.menuCategories.append(menuCategory)
-                            restaurantsArray.append(restaurant!)
-                            break outerloop
-                            //if at least one menu category is not empty, it is enough, we have to create a restaurant, so quit the category loop, and go check next restaurant
-                            
+
+                            if restaurantsArray.map({ $0.key }).contains(where: { $0 == restaurantKey }) == true {
+                                let existingRestaurant = restaurantsArray[restaurantsArray.count - 1]
+                                existingRestaurant.menuCategories.append(menuCategory)
+                                restaurantsArray[restaurantsArray.count-1] = existingRestaurant
+                            } else {
+                                let restaurant = Restaurant(json: allRestaurantsJSON[index])
+                                restaurant?.menuCategories.append(menuCategory)
+                                restaurantsArray.append(restaurant!)
+                            }
                         }
                     }
                     
                     dispatchGroup.leave()
-
                 })
+                
             }
             
-            
-            
-            dispatchGroup.notify(queue: .main, execute: { 
+            dispatchGroup.notify(queue: .main, execute: {
                 self.restaurants = restaurantsArray
+                completionHandler(true)
             })
- 
+            
         }
         
         

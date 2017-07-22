@@ -15,7 +15,7 @@ class MenuItem {
     var key: String = ""
     var name: String = ""
 
-    var price: Double = 0.0
+    var price: Double = 0
     
     var description: String?
     
