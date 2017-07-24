@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */; };
 		072C68FC1F168A9F0021C6C8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C68FB1F168A9F0021C6C8 /* MapViewController.swift */; };
 		072C68FE1F16A5BA0021C6C8 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C68FD1F16A5BA0021C6C8 /* PlacesViewController.swift */; };
 		072C691E1F1DBE270021C6C8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C691D1F1DBE270021C6C8 /* Result.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMenuItemCell.swift; sourceTree = "<group>"; };
 		072C68FB1F168A9F0021C6C8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		072C68FD1F16A5BA0021C6C8 /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		072C691D1F1DBE270021C6C8 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				07434DE11F153346007E5502 /* ResultsTableViewCell.swift */,
+				0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				072C69241F1EA8BE0021C6C8 /* Restaurant.swift in Sources */,
+				0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */,
 				072C69201F1E78EC0021C6C8 /* APIManager.swift in Sources */,
 				072C68FE1F16A5BA0021C6C8 /* PlacesViewController.swift in Sources */,
 				07434DC41F13E978007E5502 /* AppDelegate.swift in Sources */,
