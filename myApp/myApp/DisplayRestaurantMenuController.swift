@@ -22,12 +22,21 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
             }
     }
     
+    @IBAction func showButton(_ sender: Any) {
+        performSegue(withIdentifier: "toMapView", sender: self)
+    }
     
     
     @IBOutlet weak var restaurantTitleLabel: UILabel!
     @IBOutlet weak var displayMenuTableView: UITableView!
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapView"{
+            let destinationController = segue.destination as! MapViewController
+            destinationController.restaurantLatitude = (restaurant?.latitude)!
+            destinationController.restaurantLongitude = (restaurant?.longitude)!
+            destinationController.markerName = (restaurant?.name)!
+        }
     }
     
     override func viewDidLoad(){

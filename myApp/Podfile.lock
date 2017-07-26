@@ -8,19 +8,22 @@ PODS:
   - GooglePlaces (2.3.1):
     - GoogleMaps/Base (= 2.3.1)
   - SwiftyJSON (3.1.4)
+  - XLPagerTabStrip (7.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleMaps
   - GooglePlaces
   - SwiftyJSON
+  - XLPagerTabStrip (~> 7.0)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   GoogleMaps: c66a71058b9b1294bcdd5463a68e357fa50c079f
   GooglePlaces: 4a7b22debfa1af65017b82943431822607e45201
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
 
-PODFILE CHECKSUM: 5cfabe96ef5c7b005186a5f87ddcc25a630a9ec0
+PODFILE CHECKSUM: eae21a051683711179d21aa0baf47a3670cdcab9
 
 COCOAPODS: 1.2.1

@@ -7,14 +7,13 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class ResultsController: UITableViewController {
     
     var results = [Restaurant]()
     var restaurantName: String = ""
     
-//    var menuCategoryArray = [MenuCategory]()
-//    var menuCategoryItemsArray = [MenuItem]()
     var selectedRestaurant : Restaurant?
     
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
@@ -26,7 +25,6 @@ class ResultsController: UITableViewController {
             let destinationController = segue.destination as! DisplayRestaurantMenuController
             destinationController.restaurant = selectedRestaurant
             destinationController.restuarantTitle = restaurantName
-//            destinationController.menuCategorySection = menuCategoryArray
         }
     }
     
@@ -37,6 +35,7 @@ class ResultsController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         selectedRestaurant = results[indexPath.row]
+        
         
         restaurantName = results[indexPath.row].name
         performSegue(withIdentifier: "toTheRestaurantMenu", sender: self)

@@ -11,7 +11,15 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class SearchPageController: UIViewController {
+class SearchPageController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    
+    var locValue: CLLocation?
+    
+    var restaurants = [Restaurant]()
+    
+    var restaurantsMenuCategoryItems = [MenuItem!]()
     
     @IBOutlet weak var budgetTextField: UITextField!
     
@@ -21,11 +29,6 @@ class SearchPageController: UIViewController {
     @IBOutlet weak var foodItemTextField: UITextField!
     
     @IBOutlet weak var findButton: UIButton!
-    
-    
-    var restaurants = [Restaurant]()
-    
-    var restaurantsMenuCategoryItems = [MenuItem!]()
     
     @IBAction func findButtonTapped(_ sender: Any) {
 
@@ -49,9 +52,32 @@ class SearchPageController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-            
+        self.hideKeyboard()
+        
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled()
+        {
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        if let managerLocation = manager.location
+        {
+            locValue = managerLocation
+        }
+        else
+        {
+            print("failed to update current location")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -62,55 +88,67 @@ class SearchPageController: UIViewController {
     func getFinalResults(completionHandler: @escaping (Bool) -> Void) {
 
         budgetTextField.keyboardType = UIKeyboardType.numberPad
-        
-        let coordinates = CLLocationCoordinate2D(latitude: 40.7128, longitude: 74.0059)
-        
+
         let dispatchGroup = DispatchGroup()
-        APIManager.getRestaurants(forCoordinates: coordinates) { (allRestaurantsJSON) in
-            //            self.restaurants = allRestaurants
-            
-            var restaurantsArray = [Restaurant]()
-
-            //loop through the restaurants json array
-            for index in 0..<allRestaurantsJSON.count {
-                dispatchGroup.enter()
+        
+        if let currentLocation = locValue
+        {
+            APIManager.getRestaurants(forCoordinates: currentLocation.coordinate) { (allRestaurantsJSON) in
                 
-                let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
+                var restaurantsArray = [Restaurant]()
                 
-                APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, completionHandler: { (menuCategories) in
+                //loop through the restaurants json array
+                for index in 0..<allRestaurantsJSON.count {
+                    dispatchGroup.enter()
                     
+                    let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
                     
-                    for menuCategory in menuCategories {
-                        if menuCategory.name != "" {
-
-                            if restaurantsArray.map({ $0.key }).contains(where: { $0 == restaurantKey }) == true {
-                                let existingRestaurant = restaurantsArray[restaurantsArray.count - 1]
-                                existingRestaurant.menuCategories.append(menuCategory)
-                                restaurantsArray[restaurantsArray.count-1] = existingRestaurant
-                            } else {
-                                let restaurant = Restaurant(json: allRestaurantsJSON[index])
-                                restaurant?.menuCategories.append(menuCategory)
-                                restaurantsArray.append(restaurant!)
+                    APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, completionHandler: { (menuCategories) in
+                        
+                        
+                        for menuCategory in menuCategories {
+                            if menuCategory.name != "" {
+                                
+                                if restaurantsArray.map({ $0.key }).contains(where: { $0 == restaurantKey }) == true {
+                                    let existingRestaurant = restaurantsArray[restaurantsArray.count - 1]
+                                    existingRestaurant.menuCategories.append(menuCategory)
+                                    restaurantsArray[restaurantsArray.count-1] = existingRestaurant
+                                } else {
+                                    let restaurant = Restaurant(json: allRestaurantsJSON[index])
+                                    restaurant?.menuCategories.append(menuCategory)
+                                    restaurantsArray.append(restaurant!)
+                                }
                             }
                         }
-                    }
+                        
+                        dispatchGroup.leave()
+                    })
                     
-                    dispatchGroup.leave()
+                }
+                
+                dispatchGroup.notify(queue: .main, execute: {
+                    self.restaurants = restaurantsArray
+                    completionHandler(true)
                 })
                 
             }
-            
-            dispatchGroup.notify(queue: .main, execute: {
-                self.restaurants = restaurantsArray
-                completionHandler(true)
-            })
-            
         }
-        
         
     }
     
 }
 
-
-
+extension SearchPageController{
+    
+    func hideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(SearchPageController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
+}

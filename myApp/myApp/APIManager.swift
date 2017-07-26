@@ -20,21 +20,16 @@ class APIManager {
         
         
         let baseSearchURL = "https://api.eatstreet.com/publicapi/v1/restaurant/search"
-        
 
         let headers: HTTPHeaders = ["X-Access-Token": APIManager.apiToken]
-
-        let params: Parameters = ["street-address" : "Embarcadero", "method": "both"]
         
-        let parameters: Parameters = ["longitude": coordinates.longitude, "latitute": coordinates.latitude, "method": "both"]
+        let parameters: Parameters = ["longitude": coordinates.longitude, "latitude": coordinates.latitude, "method": "both"]
         
-        Alamofire.request(baseSearchURL, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers).responseData { (response) in
+        Alamofire.request(baseSearchURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseData { (response) in
             let json = JSON(with: response.data!)
             
             if let restaurantsJSON = json["restaurants"].array {
         
-
-                
                 //when done appending, send the array to closure
                 completionHandler(restaurantsJSON)
                 

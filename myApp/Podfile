@@ -9,5 +9,5 @@ target 'myApp' do
   pod 'GooglePlaces'
   pod 'Alamofire'
   pod 'SwiftyJSON'
-
+  pod 'XLPagerTabStrip', '~> 7.0'
 end
