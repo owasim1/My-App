@@ -21,6 +21,8 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     
     var restaurantsMenuCategoryItems = [MenuItem!]()
     
+    
+    
     @IBOutlet weak var budgetTextField: UITextField!
     
     @IBAction func budgetTextFieldFull(_ sender: Any) {

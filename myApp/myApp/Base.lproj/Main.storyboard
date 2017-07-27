@@ -112,38 +112,6 @@
             </objects>
             <point key="canvasLocation" x="1024.6376811594205" y="122.28260869565219"/>
         </scene>
-        <!--Apple Map View Controller-->
-        <scene sceneID="vMW-mL-u0r">
-            <objects>
-                <viewController id="4Yg-6J-viK" customClass="appleMapViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="glb-iB-NFK"/>
-                        <viewControllerLayoutGuide type="bottom" id="bRb-Jw-GNT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="YJz-kW-vym">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="isZ-nH-Wnh">
-                                <rect key="frame" x="0.0" y="28" width="414" height="399"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="isZ-nH-Wnh" secondAttribute="trailing" id="2hr-Zb-hcu"/>
-                            <constraint firstItem="isZ-nH-Wnh" firstAttribute="leading" secondItem="YJz-kW-vym" secondAttribute="leading" id="hiC-ae-TXJ"/>
-                            <constraint firstItem="bRb-Jw-GNT" firstAttribute="top" secondItem="isZ-nH-Wnh" secondAttribute="bottom" constant="309" id="jcl-DF-GmW"/>
-                            <constraint firstItem="isZ-nH-Wnh" firstAttribute="top" secondItem="glb-iB-NFK" secondAttribute="bottom" constant="8" id="mF8-kP-x1o"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="isZ-nH-Wnh" id="00T-7k-MN2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nzy-jC-gkp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2521.739130434783" y="122.28260869565219"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="tMc-ex-8V0">
             <objects>
@@ -160,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v5-bM-BIv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2607" y="870"/>
+            <point key="canvasLocation" x="2604" y="893"/>
         </scene>
         <!--Display Restaurant Menu Controller-->
         <scene sceneID="pOa-pf-bKG">
@@ -257,27 +225,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVK-1u-pLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6d4-DG-nXQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1815.9420289855075" y="869.83695652173924"/>
+            <point key="canvasLocation" x="1816" y="893"/>
         </scene>
-        <!--Places View Controller-->
-        <scene sceneID="1rz-UE-Kbj">
-            <objects>
-                <viewController id="6xN-hP-PcZ" customClass="PlacesViewController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VoB-hz-iOA"/>
-                        <viewControllerLayoutGuide type="bottom" id="iox-O9-uRU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XEe-lD-vbe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9o6-Yh-bFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3520.289855072464" y="121.46739130434784"/>
-        </scene>
-        <!--Title-->
+        <!--Results Controller-->
         <scene sceneID="pWe-PI-cM0">
             <objects>
                 <viewController id="FlO-za-2EL" customClass="ResultsController" customModule="myApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -290,14 +240,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OZT-Jd-8mY">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="642"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsTableViewCell" rowHeight="70" id="wIk-7O-28P" customClass="ResultsTableViewCell" customModule="myApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wIk-7O-28P" id="eYr-ut-WKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="69.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkl-wo-hwz">
@@ -336,10 +286,10 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vxd-Wa-YyS">
-                                <rect key="frame" x="0.0" y="64" width="414" height="29"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Results"/>
+                                    <segment title="Show on Map"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -354,8 +304,9 @@
                             <constraint firstAttribute="trailing" secondItem="vxd-Wa-YyS" secondAttribute="trailing" id="zyq-13-k1g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="psp-F9-SfL"/>
+                    <navigationItem key="navigationItem" prompt="Restaurants" id="psp-F9-SfL"/>
                     <connections>
+                        <outlet property="resultsAndMapViewSwitch" destination="vxd-Wa-YyS" id="kBO-PI-cwG"/>
                         <outlet property="tableView" destination="OZT-Jd-8mY" id="UWh-5U-flR"/>
                         <segue destination="pnK-cO-SYC" kind="show" identifier="toTheRestaurantMenu" id="Fn1-KT-TQn"/>
                     </connections>

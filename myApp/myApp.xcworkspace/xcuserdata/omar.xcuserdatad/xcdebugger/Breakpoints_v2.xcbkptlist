@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "myApp/SearchPageController.swift"
-            timestampString = "522806158.42281"
+            timestampString = "522824524.482345"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "findButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>

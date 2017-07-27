@@ -10,6 +10,8 @@ import GoogleMaps
 
 class MapViewController: UIViewController {
     
+    var resultsOnMap = [Restaurant]()
+    
     var markerName = ""
     
     var restaurantLongitude = 0.0
@@ -23,7 +25,7 @@ class MapViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: restaurantLatitude, longitude: restaurantLongitude, zoom: 10)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         
-        let restaurantLocation = CLLocationCoordinate2D(latitude: 33.3, longitude: -122)
+        let restaurantLocation = CLLocationCoordinate2D(latitude: restaurantLatitude, longitude: restaurantLongitude)
         let marker = GMSMarker(position: restaurantLocation)
         marker.position = camera.target
         marker.title = markerName

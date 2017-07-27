@@ -14,13 +14,17 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     var results = [Restaurant]()
     var restaurantName: String = ""
     
+    var selectedRestaurant : Restaurant?
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedRestaurant : Restaurant?
+    @IBOutlet weak var resultsAndMapViewSwitch: UISegmentedControl!
     
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
         
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toTheRestaurantMenu" {
