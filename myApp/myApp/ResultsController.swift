@@ -9,10 +9,12 @@
 import UIKit
 import XLPagerTabStrip
 
-class ResultsController: UITableViewController {
+class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var results = [Restaurant]()
     var restaurantName: String = ""
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var selectedRestaurant : Restaurant?
     
@@ -28,11 +30,11 @@ class ResultsController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         selectedRestaurant = results[indexPath.row]
         
@@ -41,7 +43,7 @@ class ResultsController: UITableViewController {
         performSegue(withIdentifier: "toTheRestaurantMenu", sender: self)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultsTableViewCell", for: indexPath) as! ResultsTableViewCell
         
