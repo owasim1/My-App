@@ -51,6 +51,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
             let destinationController = segue.destination as! ResultsController
             
             destinationController.results = restaurants
+            destinationController.preferredType = foodItemTextField.text!.lowercased()
         }
     }
     
@@ -105,7 +106,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
                     
                     let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
                     
-                    APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, completionHandler: { (menuCategories) in
+                    APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, foodType: self.foodItemTextField.text!, completionHandler: { (menuCategories) in
                         
                         
                         for menuCategory in menuCategories {

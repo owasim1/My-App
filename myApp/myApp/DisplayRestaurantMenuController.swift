@@ -14,6 +14,7 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
     var restuarantTitle: String?
     var menuCategorySection = [MenuCategory]()
     var menuCategoryItemsRow = [[MenuItem]]()
+    var itemSearched: String! = ""
     var restaurant : Restaurant? {
         didSet {
                 for category in (restaurant?.menuCategories)! {

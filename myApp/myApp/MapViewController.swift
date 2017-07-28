@@ -22,7 +22,7 @@ class MapViewController: UIViewController {
         
         navigationItem.title = markerName
         
-        let camera = GMSCameraPosition.camera(withLatitude: restaurantLatitude, longitude: restaurantLongitude, zoom: 10)
+        let camera = GMSCameraPosition.camera(withLatitude: restaurantLatitude, longitude: restaurantLongitude, zoom: 30)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         
         let restaurantLocation = CLLocationCoordinate2D(latitude: restaurantLatitude, longitude: restaurantLongitude)

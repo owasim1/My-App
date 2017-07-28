@@ -23,11 +23,12 @@ class MenuCategory {
     
     init?(usingJSON json: JSON, underBudget budget: Double) {
         
-        
         guard let key = json["apiKey"].string,
             let name = json["name"].string else {
+                //if fails to create a new object, returns nil.
                 return
         }
+        
         
         var menuItems = [MenuItem]()
 

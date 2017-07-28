@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0711D8CA1F27B0D000A1A01E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0711D8C91F27B0D000A1A01E /* MapKit.framework */; };
-		0711D8CC1F27B1AB00A1A01E /* appleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0711D8CB1F27B1AB00A1A01E /* appleMapViewController.swift */; };
 		0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */; };
 		071B929A1F2914B100496642 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B92991F2914B100496642 /* CoreLocation.framework */; };
 		072C68FC1F168A9F0021C6C8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C68FB1F168A9F0021C6C8 /* MapViewController.swift */; };
-		072C68FE1F16A5BA0021C6C8 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C68FD1F16A5BA0021C6C8 /* PlacesViewController.swift */; };
 		072C691E1F1DBE270021C6C8 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C691D1F1DBE270021C6C8 /* Result.swift */; };
 		072C69201F1E78EC0021C6C8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C691F1F1E78EC0021C6C8 /* APIManager.swift */; };
 		072C69241F1EA8BE0021C6C8 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072C69231F1EA8BE0021C6C8 /* Restaurant.swift */; };
@@ -31,11 +29,9 @@
 
 /* Begin PBXFileReference section */
 		0711D8C91F27B0D000A1A01E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		0711D8CB1F27B1AB00A1A01E /* appleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appleMapViewController.swift; sourceTree = "<group>"; };
 		0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMenuItemCell.swift; sourceTree = "<group>"; };
 		071B92991F2914B100496642 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		072C68FB1F168A9F0021C6C8 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		072C68FD1F16A5BA0021C6C8 /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		072C691D1F1DBE270021C6C8 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		072C691F1F1E78EC0021C6C8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		072C69231F1EA8BE0021C6C8 /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -110,8 +106,6 @@
 				07434DDE1F142517007E5502 /* ResultsController.swift */,
 				07C9988B1F227AA900F9439D /* DisplayRestaurantMenuController.swift */,
 				072C68FB1F168A9F0021C6C8 /* MapViewController.swift */,
-				072C68FD1F16A5BA0021C6C8 /* PlacesViewController.swift */,
-				0711D8CB1F27B1AB00A1A01E /* appleMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -296,8 +290,6 @@
 				072C69241F1EA8BE0021C6C8 /* Restaurant.swift in Sources */,
 				0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */,
 				072C69201F1E78EC0021C6C8 /* APIManager.swift in Sources */,
-				072C68FE1F16A5BA0021C6C8 /* PlacesViewController.swift in Sources */,
-				0711D8CC1F27B1AB00A1A01E /* appleMapViewController.swift in Sources */,
 				07434DC41F13E978007E5502 /* AppDelegate.swift in Sources */,
 				07C9988C1F227AA900F9439D /* DisplayRestaurantMenuController.swift in Sources */,
 				07434DDB1F141D3E007E5502 /* SearchPageController.swift in Sources */,

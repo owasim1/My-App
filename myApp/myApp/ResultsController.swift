@@ -16,6 +16,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var selectedRestaurant : Restaurant?
     
+    var preferredType: String! = ""
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var resultsAndMapViewSwitch: UISegmentedControl!
@@ -35,15 +37,26 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        if preferredType != ""{
+            return results.filter({$0.foodType!.contains(preferredType)}).count
+        }
+        else{
+            return results.count
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        selectedRestaurant = results[indexPath.row]
+        
+        if preferredType != ""{
+            selectedRestaurant = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row]
+        }
+        else{
+            selectedRestaurant = results[indexPath.row]
+        }
         
         
-        restaurantName = results[indexPath.row].name
+        restaurantName = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row].name
         performSegue(withIdentifier: "toTheRestaurantMenu", sender: self)
     }
     
@@ -53,7 +66,14 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let row = indexPath.row
         
-        let result = results[row]
+        let result: Restaurant
+        
+        if preferredType != ""{
+            result = results.filter({$0.foodType!.contains(preferredType)})[row]
+        }
+        else{
+            result = results[row]
+        }
         
         cell.nameOfRestaurantLabel.text = result.name
         cell.restaurantTypeLabel.text = result.restaurantType
@@ -65,6 +85,6 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        print(selectedRestaurant?.foodType ?? "")
     }
 }

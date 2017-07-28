@@ -40,7 +40,7 @@ class APIManager {
         
     }
     
-    static func getMenuCategories(forRestaurantKey key: String, underBudget budget: Double, completionHandler: @escaping ([MenuCategory]) -> Void) {
+    static func getMenuCategories(forRestaurantKey key: String, underBudget budget: Double, foodType: String, completionHandler: @escaping ([MenuCategory]) -> Void) {
 
         let url = "https://api.eatstreet.com/publicapi/v1/restaurant/\(key)/menu"
         
@@ -58,6 +58,7 @@ class APIManager {
             var menuCategories = [MenuCategory]()
 
             for menuCategoryJSON in menuCategoriesJSON {
+                //menu category might fail to initialize if json data is nil or if internet is not working.
                 if let menuCategory = MenuCategory(usingJSON: menuCategoryJSON, underBudget: budget) {
                     menuCategories.append(menuCategory)
                 }
