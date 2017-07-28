@@ -50,13 +50,15 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if preferredType != ""{
             selectedRestaurant = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row]
+            restaurantName = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row].name
+
         }
         else{
             selectedRestaurant = results[indexPath.row]
+            restaurantName = results[indexPath.row].name
+
         }
         
-        
-        restaurantName = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row].name
         performSegue(withIdentifier: "toTheRestaurantMenu", sender: self)
     }
     
