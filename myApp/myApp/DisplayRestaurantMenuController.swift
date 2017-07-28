@@ -34,9 +34,10 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapView"{
             let destinationController = segue.destination as! MapViewController
-            destinationController.restaurantLatitude = (restaurant?.latitude)!
-            destinationController.restaurantLongitude = (restaurant?.longitude)!
+//            destinationController.restaurantLatitude = (restaurant?.latitude)!
+//            destinationController.restaurantLongitude = (restaurant?.longitude)!
             destinationController.markerName = (restaurant?.name)!
+            destinationController.resultsOnMap = [restaurant!]
         }
     }
     

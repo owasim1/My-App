@@ -21,7 +21,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     
     var restaurantsMenuCategoryItems = [MenuItem!]()
     
-    
+    var trimmedString: String = ""
     
     @IBOutlet weak var budgetTextField: UITextField!
     
@@ -51,9 +51,10 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
             let destinationController = segue.destination as! ResultsController
             
             destinationController.results = restaurants
-            destinationController.preferredType = foodItemTextField.text!.lowercased()
+            destinationController.preferredType = trimmedString.lowercased()
         }
     }
+    
     
     override func viewDidLoad()
     {
@@ -106,8 +107,9 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
                     
                     let restaurantKey = allRestaurantsJSON[index]["apiKey"].stringValue
                     
-                    APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, foodType: self.foodItemTextField.text!, completionHandler: { (menuCategories) in
-                        
+                    self.trimmedString = self.foodItemTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    APIManager.getMenuCategories(forRestaurantKey: restaurantKey, underBudget: Double(self.budgetTextField.text!)!, foodType: self.trimmedString, completionHandler: { (menuCategories) in
                         
                         for menuCategory in menuCategories {
                             if menuCategory.name != "" {

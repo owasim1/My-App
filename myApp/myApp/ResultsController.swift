@@ -18,14 +18,17 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var preferredType: String! = ""
     
-    @IBOutlet weak var tableView: UITableView!
+    var filteredResults = [Restaurant]()
     
-    @IBOutlet weak var resultsAndMapViewSwitch: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
         
     }
     
+    @IBAction func showOnMapPressed(_ sender: Any) {
+        performSegue(withIdentifier: "restaurantsToMap", sender: self)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,6 +36,10 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
             let destinationController = segue.destination as! DisplayRestaurantMenuController
             destinationController.restaurant = selectedRestaurant
             destinationController.restuarantTitle = restaurantName
+        }
+        if segue.identifier == "restaurantsToMap"{
+            let destinationController = segue.destination as! MapViewController
+            destinationController.resultsOnMap = filteredResults
         }
     }
     
@@ -87,6 +94,6 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(selectedRestaurant?.foodType ?? "")
+        filteredResults = results.filter({$0.foodType!.contains(preferredType)})
     }
 }

@@ -20,19 +20,22 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = markerName
-        
-        let camera = GMSCameraPosition.camera(withLatitude: restaurantLatitude, longitude: restaurantLongitude, zoom: 30)
+        let camera = GMSCameraPosition.camera(withLatitude: resultsOnMap[0].latitude, longitude:resultsOnMap[0].longitude, zoom: 13)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        print(resultsOnMap.count)
         
-        let restaurantLocation = CLLocationCoordinate2D(latitude: restaurantLatitude, longitude: restaurantLongitude)
-        let marker = GMSMarker(position: restaurantLocation)
-        marker.position = camera.target
-        marker.title = markerName
-        marker.map = mapView
+        for result in resultsOnMap{
+            navigationItem.title = markerName
         
-        view = mapView
-        
+            
+            let restaurantLocation = CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude)
+            let marker = GMSMarker(position: restaurantLocation)
+            marker.title = result.name
+            marker.map = mapView
+            
+            view = mapView
+            }
+        }
     }
-}
+
     
