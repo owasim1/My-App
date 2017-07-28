@@ -92,12 +92,18 @@
                                     <constraint firstItem="PUZ-h9-4Su" firstAttribute="leading" secondItem="XzQ-Nz-UNS" secondAttribute="leading" id="jw6-CP-1U7"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="t16-ph-IrH">
+                                <rect key="frame" x="305" y="315" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XzQ-Nz-UNS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EqL-7V-XRk"/>
                             <constraint firstItem="XzQ-Nz-UNS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="97" id="TmR-bL-h7E"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t16-ph-IrH" secondAttribute="trailing" constant="69" id="We6-9x-kiC"/>
                             <constraint firstItem="XzQ-Nz-UNS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="86" id="l79-h7-vWg"/>
+                            <constraint firstItem="t16-ph-IrH" firstAttribute="leading" secondItem="XzQ-Nz-UNS" secondAttribute="trailing" constant="8" id="o0C-9I-9fJ"/>
+                            <constraint firstItem="t16-ph-IrH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="251" id="vQO-ZN-0pC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c0c-BH-qkL"/>
@@ -105,6 +111,7 @@
                         <outlet property="budgetTextField" destination="8it-qj-vll" id="yxp-1Z-kVs"/>
                         <outlet property="findButton" destination="cyw-pa-Fea" id="JYu-bD-RsI"/>
                         <outlet property="foodItemTextField" destination="ecl-ud-oP6" id="FHM-B9-IGb"/>
+                        <outlet property="loadingDataIndicator" destination="t16-ph-IrH" id="18g-Iy-jp5"/>
                         <segue destination="FlO-za-2EL" kind="show" identifier="toResultsPage" id="iN8-zN-Qns"/>
                     </connections>
                 </viewController>
@@ -321,7 +328,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nwo-yv-JZv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rzK-on-Eer">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rzK-on-Eer">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

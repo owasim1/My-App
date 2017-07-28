@@ -23,6 +23,9 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     
     var trimmedString: String = ""
     
+    @IBOutlet weak var loadingDataIndicator: UIActivityIndicatorView!
+    
+    
     @IBOutlet weak var budgetTextField: UITextField!
     
     @IBAction func budgetTextFieldFull(_ sender: Any) {
@@ -36,9 +39,13 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
 
         findButton.isUserInteractionEnabled = false
         
+        loadingDataIndicator.isHidden = false
+        loadingDataIndicator.startAnimating()
+        
         getFinalResults { (didComplete) in
             if didComplete
             {
+                self.loadingDataIndicator.isHidden = true
                 self.performSegue(withIdentifier: "toResultsPage", sender: self)
             }
         }
@@ -70,6 +77,8 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        loadingDataIndicator.isHidden = true
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
