@@ -79,6 +79,16 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
         }
         
         loadingDataIndicator.isHidden = true
+        
+        foodItemTextField.addTarget(self, action: #selector(SearchPageController.textFieldDidChange(textField:)), for: .editingChanged)
+    }
+    
+    func textFieldDidChange(textField: UITextField)
+    {
+//        if !textField.text!.lowercased().hasPrefix("sandwiches")
+//        {
+            textField.text = textField.text!.replacingOccurrences(of: " ", with: "")
+        //}
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])

@@ -79,14 +79,17 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         if preferredType != ""{
             result = results.filter({$0.foodType!.contains(preferredType)})[row]
+            filteredResults = results.filter({$0.foodType!.contains(preferredType)})
         }
         else{
             result = results[row]
+            filteredResults = results
         }
         
         cell.nameOfRestaurantLabel.text = result.name
         cell.restaurantTypeLabel.text = result.restaurantType
         cell.distanceLabel.text = String(result.distance)
+        cell.accessoryType = .disclosureIndicator
         
         return cell
     }
@@ -94,6 +97,5 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredResults = results.filter({$0.foodType!.contains(preferredType)})
     }
 }

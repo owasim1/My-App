@@ -59,13 +59,13 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         return menuCategorySection[section].name
     }
     
-    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        var categoryName = [String]()
-        for category in menuCategorySection{
-            categoryName.append(category.name)
-        }
-        return categoryName
-    }
+//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+//        var categoryName = [String]()
+//        for category in menuCategorySection{
+//            categoryName.append(category.name)
+//        }
+//        return categoryName
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuCategorySection[section].items?.count ?? 0
