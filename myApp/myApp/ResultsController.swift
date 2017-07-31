@@ -16,7 +16,7 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var selectedRestaurant : Restaurant?
     
-    var preferredType: String! = ""
+    var preferredType: String!
     
     var filteredResults = [Restaurant]()
     
@@ -55,7 +55,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         
-        if preferredType != ""{
+        if preferredType != "" {
+            
             selectedRestaurant = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row]
             restaurantName = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row].name
 
@@ -75,11 +76,13 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let row = indexPath.row
         
-        let result: Restaurant
+        var result: Restaurant
         
         if preferredType != ""{
-            result = results.filter({$0.foodType!.contains(preferredType)})[row]
-            filteredResults = results.filter({$0.foodType!.contains(preferredType)})
+            
+                result = results.filter({$0.foodType!.contains(preferredType)})[row]
+                filteredResults = results.filter({$0.foodType!.contains(preferredType)})
+    
         }
         else{
             result = results[row]
@@ -97,5 +100,21 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        var foodTypes = [String]()
+        
+        for a in 0..<results.count {
+            for b in 0..<results[a].foodType!.count {
+                if results[a].foodType![b].contains(preferredType) {
+                    foodTypes.append(results[a].foodType![b])
+                }
+            }
+        }
+        
+        for type in foodTypes {
+            print(type)
+        }
     }
 }

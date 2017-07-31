@@ -14,7 +14,6 @@ import CoreLocation
 class APIManager {
 
     static let apiToken = "11443211f14e75a5"
-
     
     static func getRestaurants(forCoordinates coordinates: CLLocationCoordinate2D, completionHandler: @escaping ([JSON]) -> Void) {
         

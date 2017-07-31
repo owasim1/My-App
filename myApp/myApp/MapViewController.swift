@@ -18,12 +18,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var restaurantLongitude = 0.0
     var restaurantLatitude = 0.0
     
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
+    var mapView: GMSMapView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
         
         let camera = GMSCameraPosition.camera(withLatitude: resultsOnMap[0].latitude, longitude:resultsOnMap[0].longitude, zoom: 13)
-        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         print(resultsOnMap.count)
         
         for result in resultsOnMap{
@@ -37,7 +48,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             view = mapView
         }
     }
-}
-
-
     
+}
