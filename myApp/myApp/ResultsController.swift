@@ -44,8 +44,18 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        var filteredRestaurants = [Restaurant]()
+        
         if preferredType != ""{
-            return results.filter({$0.foodType!.contains(preferredType)}).count
+            for a in 0..<results.count{
+                for b in 0..<results[a].foodType!.count {
+                    if results[a].foodType![b].contains(preferredType) {
+                        filteredRestaurants.append(results[a])
+                    }
+                }
+            }
+            return filteredRestaurants.count
         }
         else{
             return results.count
@@ -55,11 +65,18 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         
+        var filteredRestaurants = [Restaurant]()
+        
         if preferredType != "" {
-            
-            selectedRestaurant = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row]
-            restaurantName = results.filter({$0.foodType!.contains(preferredType)})[indexPath.row].name
-
+            for a in 0..<results.count{
+                for b in 0..<results[a].foodType!.count {
+                    if results[a].foodType![b].contains(preferredType) {
+                        filteredRestaurants.append(results[a])
+                    }
+                }
+            }
+            selectedRestaurant = filteredRestaurants[indexPath.row]
+            restaurantName = filteredRestaurants[indexPath.row].name
         }
         else{
             selectedRestaurant = results[indexPath.row]
@@ -76,13 +93,20 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         let row = indexPath.row
         
-        var result: Restaurant
+        let result: Restaurant
+        
+        var filteredRestaurants = [Restaurant]()
         
         if preferredType != ""{
-            
-                result = results.filter({$0.foodType!.contains(preferredType)})[row]
-                filteredResults = results.filter({$0.foodType!.contains(preferredType)})
-    
+            for a in 0..<results.count{
+                for b in 0..<results[a].foodType!.count {
+                    if results[a].foodType![b].contains(preferredType) {
+                        filteredRestaurants.append(results[a])
+                    }
+                }
+            }
+            result = filteredRestaurants[row]
+            filteredResults = filteredRestaurants
         }
         else{
             result = results[row]

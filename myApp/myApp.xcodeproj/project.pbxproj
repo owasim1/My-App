@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07106A1F1F2FF65C007FF83C /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07106A1E1F2FF65C007FF83C /* PlacesViewController.swift */; };
 		0711D8CA1F27B0D000A1A01E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0711D8C91F27B0D000A1A01E /* MapKit.framework */; };
 		0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */; };
 		071B929A1F2914B100496642 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071B92991F2914B100496642 /* CoreLocation.framework */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07106A1E1F2FF65C007FF83C /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		0711D8C91F27B0D000A1A01E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayMenuItemCell.swift; sourceTree = "<group>"; };
 		071B92991F2914B100496642 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -106,6 +108,7 @@
 				07434DDE1F142517007E5502 /* ResultsController.swift */,
 				07C9988B1F227AA900F9439D /* DisplayRestaurantMenuController.swift */,
 				072C68FB1F168A9F0021C6C8 /* MapViewController.swift */,
+				07106A1E1F2FF65C007FF83C /* PlacesViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				07C9988C1F227AA900F9439D /* DisplayRestaurantMenuController.swift in Sources */,
 				07434DDB1F141D3E007E5502 /* SearchPageController.swift in Sources */,
 				07434DE21F153346007E5502 /* ResultsTableViewCell.swift in Sources */,
+				07106A1F1F2FF65C007FF83C /* PlacesViewController.swift in Sources */,
 				072C691E1F1DBE270021C6C8 /* Result.swift in Sources */,
 				072C69261F1EA9240021C6C8 /* MenuItem.swift in Sources */,
 				072C692A1F1EC10C0021C6C8 /* MenuCategory.swift in Sources */,
