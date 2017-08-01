@@ -51,7 +51,11 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
             for a in 0..<results.count{
                 for b in 0..<results[a].foodType!.count {
                     if results[a].foodType![b].contains(preferredType) {
-                        filteredRestaurants.append(results[a])
+                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
+                            filteredRestaurants.append(results[a])
+
+                        }
+                        
                     }
                 }
             }
@@ -71,7 +75,10 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
             for a in 0..<results.count{
                 for b in 0..<results[a].foodType!.count {
                     if results[a].foodType![b].contains(preferredType) {
-                        filteredRestaurants.append(results[a])
+                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
+                            filteredRestaurants.append(results[a])
+                            
+                        }
                     }
                 }
             }
@@ -101,7 +108,10 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
             for a in 0..<results.count{
                 for b in 0..<results[a].foodType!.count {
                     if results[a].foodType![b].contains(preferredType) {
-                        filteredRestaurants.append(results[a])
+                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
+                            filteredRestaurants.append(results[a])
+                            
+                        }
                     }
                 }
             }
@@ -124,21 +134,5 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        var foodTypes = [String]()
-        
-        for a in 0..<results.count {
-            for b in 0..<results[a].foodType!.count {
-                if results[a].foodType![b].contains(preferredType) {
-                    foodTypes.append(results[a].foodType![b])
-                }
-            }
-        }
-        
-        for type in foodTypes {
-            print(type)
-        }
     }
 }
