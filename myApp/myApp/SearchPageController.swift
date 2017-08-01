@@ -36,8 +36,8 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var findButton: UIButton!
     
     @IBAction func findButtonTapped(_ sender: Any) {
-        let x = Double(budgetTextField.text!)
-        if x == 0{
+        
+        if Double(budgetTextField.text!) == 0 {
             let alertMinBudget = UIAlertController(title: "Attention!", message: "You need to put in a value over $0!", preferredStyle: UIAlertControllerStyle.alert)
             alertMinBudget.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertMinBudget, animated: true, completion: nil)

@@ -30,8 +30,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
-        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        
         
         let camera = GMSCameraPosition.camera(withLatitude: resultsOnMap[0].latitude, longitude:resultsOnMap[0].longitude, zoom: 13)
         mapView = GMSMapView.map(withFrame: .zero, camera: camera)
@@ -47,6 +48,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             view = mapView
         }
+
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            locationManager.startUpdatingLocation()
+            mapView.isMyLocationEnabled = true
+            mapView.settings.myLocationButton = true
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let lastUpdatedLocation = locations.last
+        currentLocation = lastUpdatedLocation
+        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation?.coordinate.latitude)!, longitude:(currentLocation?.coordinate.longitude)!, zoom: 13)
+        mapView.camera = camera
+        
+        
+        print("Lat: \(currentLocation?.coordinate.latitude), Lon: \(currentLocation?.coordinate.longitude)")
+        locationManager.stopUpdatingLocation()
     }
     
 }
