@@ -62,11 +62,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let lastUpdatedLocation = locations.last
         currentLocation = lastUpdatedLocation
-        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation?.coordinate.latitude)!, longitude:(currentLocation?.coordinate.longitude)!, zoom: 13)
-        mapView.camera = camera
+//        let camera = GMSCameraPosition.camera(withLatitude: (currentLocation?.coordinate.latitude)!, longitude:(currentLocation?.coordinate.longitude)!, zoom: 13)
         
-        
-        print("Lat: \(currentLocation?.coordinate.latitude), Lon: \(currentLocation?.coordinate.longitude)")
         locationManager.stopUpdatingLocation()
     }
     
