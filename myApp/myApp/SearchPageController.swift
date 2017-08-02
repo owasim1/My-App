@@ -74,6 +74,8 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     {
         super.viewDidLoad()
         self.hideKeyboard()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
