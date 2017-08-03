@@ -47,16 +47,22 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
         
         loadingDataIndicator.isHidden = false
         loadingDataIndicator.startAnimating()
-        
+        self.navigationController?.isNavigationBarHidden = true
+        loadScreenView.isHidden = false
+            
         getFinalResults { (didComplete) in
             if didComplete
             {
                 self.loadingDataIndicator.isHidden = true
+                self.loadScreenView.isHidden = true
                 self.performSegue(withIdentifier: "toResultsPage", sender: self)
+                self.navigationController?.isNavigationBarHidden = false
             }
         }
       }
     }
+    
+    @IBOutlet weak var loadScreenView: UIView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -73,6 +79,9 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        loadScreenView.isHidden = true
+        
         self.hideKeyboard()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
