@@ -17,15 +17,30 @@ class DesignableTextField: UITextField {
         }
     }
     
+    @IBInspectable var leftPadding : CGFloat = 0{
+        didSet{
+            updateView()
+        }
+    }
+    
+    @IBInspectable var upperPadding : CGFloat = 0{
+        didSet{
+            updateView()
+        }
+    }
+    
+    
     func updateView(){
         
         if let image = leftImage {
             leftViewMode = .always
             
-            let imageView = UIImageView(frame: CGRect(x: 12, y: 0, width: 34, height: 29))
+            let imageView = UIImageView(frame: CGRect(x: leftPadding, y: upperPadding, width: 34, height: 29))
             imageView.image = image
             
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 58, height: 20))
+            let width = 50 + leftPadding
+            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
             view.addSubview(imageView)
             leftView = view
             

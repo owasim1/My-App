@@ -55,6 +55,12 @@
                                                 <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Budget"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="upperPadding">
+                                                <real key="value" value="-5"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="budgetTextFieldFull:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="xuK-41-9yY"/>
@@ -71,6 +77,12 @@
                                                 <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Cuisine"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="upperPadding">
+                                                <real key="value" value="-4"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="J7P-CP-fsY"/>
