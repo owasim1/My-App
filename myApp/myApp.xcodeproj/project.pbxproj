@@ -25,6 +25,7 @@
 		07434DDF1F142517007E5502 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07434DDE1F142517007E5502 /* ResultsController.swift */; };
 		07434DE21F153346007E5502 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07434DE11F153346007E5502 /* ResultsTableViewCell.swift */; };
 		07C9988C1F227AA900F9439D /* DisplayRestaurantMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C9988B1F227AA900F9439D /* DisplayRestaurantMenuController.swift */; };
+		07F872671F339C0400C7EE92 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F872661F339C0400C7EE92 /* DesignableTextField.swift */; };
 		6CBA7D7735E4AC61874F4C35 /* Pods_myApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E4BFE8A489A71BB0247AF9 /* Pods_myApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		07434DDE1F142517007E5502 /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
 		07434DE11F153346007E5502 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 		07C9988B1F227AA900F9439D /* DisplayRestaurantMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayRestaurantMenuController.swift; sourceTree = "<group>"; };
+		07F872661F339C0400C7EE92 /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		215282D6F2AF207E499B0CC0 /* Pods-myApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myApp/Pods-myApp.release.xcconfig"; sourceTree = "<group>"; };
 		5A13F57FE1F53CE27FA15581 /* Pods-myApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-myApp/Pods-myApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C6E4BFE8A489A71BB0247AF9 /* Pods_myApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 			children = (
 				07434DE11F153346007E5502 /* ResultsTableViewCell.swift */,
 				0716641C1F269D17008D21F6 /* DisplayMenuItemCell.swift */,
+				07F872661F339C0400C7EE92 /* DesignableTextField.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				072C69241F1EA8BE0021C6C8 /* Restaurant.swift in Sources */,
 				0716641D1F269D17008D21F6 /* DisplayMenuItemCell.swift in Sources */,
 				072C69201F1E78EC0021C6C8 /* APIManager.swift in Sources */,
+				07F872671F339C0400C7EE92 /* DesignableTextField.swift in Sources */,
 				07434DC41F13E978007E5502 /* AppDelegate.swift in Sources */,
 				07C9988C1F227AA900F9439D /* DisplayRestaurantMenuController.swift in Sources */,
 				07434DDB1F141D3E007E5502 /* SearchPageController.swift in Sources */,

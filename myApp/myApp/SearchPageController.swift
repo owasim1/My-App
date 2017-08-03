@@ -77,6 +77,9 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
+        budgetTextField.leftViewMode = .always
+        
+        
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
