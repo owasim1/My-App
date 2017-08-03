@@ -10,6 +10,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search Page Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -27,89 +32,85 @@
                                 <rect key="frame" x="53" y="593" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="177" translatesAutoresizingMaskIntoConstraints="NO" id="gXs-au-Sud">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SMARTEATS FINAL" translatesAutoresizingMaskIntoConstraints="NO" id="qj7-Ws-MUo">
+                                <rect key="frame" x="56" y="20" width="286" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qj7-Ws-MUo" secondAttribute="height" multiplier="286:93" id="T1o-gP-LRB"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-uU-bz4">
+                                <rect key="frame" x="36" y="163" width="303" height="143"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="oGt-Fu-dQq">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="319"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="SMARTEATS FINAL" translatesAutoresizingMaskIntoConstraints="NO" id="qj7-Ws-MUo">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="214"/>
-                                            </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-uU-bz4">
-                                                <rect key="frame" x="0.0" y="264" width="375" height="55"/>
-                                                <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Budget" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8it-qj-vll" customClass="DesignableTextField" customModule="myApp" customModuleProvider="target">
-                                                        <rect key="frame" x="32" y="0.0" width="311" height="15"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Budget"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="budgetTextFieldFull:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="xuK-41-9yY"/>
-                                                        </connections>
-                                                    </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cuisine" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecl-ud-oP6" customClass="DesignableTextField" customModule="myApp" customModuleProvider="target">
-                                                        <rect key="frame" x="32" y="38" width="311" height="17"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                                <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Cuisine"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="J7P-CP-fsY"/>
-                                                        </connections>
-                                                    </textField>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="8it-qj-vll" secondAttribute="trailing" constant="31" id="2kc-L9-NPe"/>
-                                                    <constraint firstItem="8it-qj-vll" firstAttribute="trailing" secondItem="ecl-ud-oP6" secondAttribute="trailing" id="8Yq-zL-F7K"/>
-                                                    <constraint firstItem="ecl-ud-oP6" firstAttribute="leading" secondItem="HY8-uU-bz4" secondAttribute="leading" constant="32" id="LYn-f4-2zR"/>
-                                                    <constraint firstItem="8it-qj-vll" firstAttribute="leading" secondItem="ecl-ud-oP6" secondAttribute="leading" id="S2N-fX-iqv"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ecl-ud-oP6" secondAttribute="trailing" constant="31" id="Ueh-xh-Nkh"/>
-                                                    <constraint firstItem="8it-qj-vll" firstAttribute="leading" secondItem="HY8-uU-bz4" secondAttribute="leading" constant="32" id="gdy-b2-lqy"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Budget" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8it-qj-vll" customClass="DesignableTextField" customModule="myApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="60"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="HY8-uU-bz4" secondAttribute="trailing" id="TxA-ED-53q"/>
-                                            <constraint firstItem="HY8-uU-bz4" firstAttribute="leading" secondItem="oGt-Fu-dQq" secondAttribute="leading" id="wQB-4d-cDh"/>
+                                            <constraint firstAttribute="height" constant="60" id="8PN-Ax-iS6"/>
                                         </constraints>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyw-pa-Fea">
-                                        <rect key="frame" x="47" y="496" width="281" height="54"/>
-                                        <color key="backgroundColor" red="0.80784313725490198" green="0.43137254901960786" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="cyw-pa-Fea" secondAttribute="height" multiplier="281:54" id="5i4-um-Nrd"/>
-                                            <constraint firstAttribute="width" constant="281" id="76m-zo-uE6"/>
-                                        </constraints>
-                                        <state key="normal" title="Search">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Budget"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="findButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AyQ-iD-euM"/>
+                                            <action selector="budgetTextFieldFull:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="xuK-41-9yY"/>
                                         </connections>
-                                    </button>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cuisine" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ecl-ud-oP6" customClass="DesignableTextField" customModule="myApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="83" width="303" height="60"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" red="0.41568627450980389" green="0.41568627450980389" blue="0.41568627450980389" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="Cuisine"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="J7P-CP-fsY"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="8it-qj-vll" firstAttribute="trailing" secondItem="ecl-ud-oP6" secondAttribute="trailing" id="8Yq-zL-F7K"/>
+                                    <constraint firstAttribute="trailing" secondItem="8it-qj-vll" secondAttribute="trailing" id="Hic-zx-Equ"/>
+                                    <constraint firstItem="ecl-ud-oP6" firstAttribute="height" secondItem="8it-qj-vll" secondAttribute="height" id="Lv9-DJ-XaN"/>
+                                    <constraint firstItem="8it-qj-vll" firstAttribute="top" secondItem="HY8-uU-bz4" secondAttribute="top" id="Q0a-VM-Jft"/>
+                                    <constraint firstItem="8it-qj-vll" firstAttribute="leading" secondItem="ecl-ud-oP6" secondAttribute="leading" id="S2N-fX-iqv"/>
+                                    <constraint firstItem="8it-qj-vll" firstAttribute="leading" secondItem="HY8-uU-bz4" secondAttribute="leading" id="uEl-yO-ktZ"/>
+                                </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyw-pa-Fea">
+                                <rect key="frame" x="50" y="415" width="275" height="54"/>
+                                <color key="backgroundColor" red="0.80784313725490198" green="0.43137254901960786" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cyw-pa-Fea" secondAttribute="height" multiplier="281:54" id="5i4-um-Nrd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AyQ-iD-euM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28627450980392155" green="0.72941176470588232" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gXs-au-Sud" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bku-9L-cqH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gXs-au-Sud" secondAttribute="bottom" constant="53" id="DT2-TQ-VzD"/>
-                            <constraint firstAttribute="trailing" secondItem="gXs-au-Sud" secondAttribute="trailing" id="Yh0-Er-rIq"/>
-                            <constraint firstItem="gXs-au-Sud" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tIN-p3-bcX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HY8-uU-bz4" secondAttribute="trailing" constant="20" id="4H7-US-Vph"/>
+                            <constraint firstAttribute="trailing" secondItem="qj7-Ws-MUo" secondAttribute="trailing" constant="33" id="KE7-bl-mgy"/>
+                            <constraint firstItem="HY8-uU-bz4" firstAttribute="top" secondItem="qj7-Ws-MUo" secondAttribute="bottom" constant="50" id="RfW-R2-39T"/>
+                            <constraint firstItem="qj7-Ws-MUo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="56" id="imD-0S-yzo"/>
+                            <constraint firstAttribute="trailing" secondItem="cyw-pa-Fea" secondAttribute="trailing" constant="50" id="jEJ-db-UiH"/>
+                            <constraint firstItem="qj7-Ws-MUo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="jLG-Un-0wm"/>
+                            <constraint firstItem="HY8-uU-bz4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ku2-ZK-x2s"/>
+                            <constraint firstItem="cyw-pa-Fea" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="uKO-Xg-wF0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c0c-BH-qkL"/>

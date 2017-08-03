@@ -125,7 +125,7 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         cell.nameOfRestaurantLabel.text = result.name
         cell.restaurantTypeLabel.text = result.restaurantType
-        cell.distanceLabel.text = String(result.distance)
+//        cell.distanceLabel?.text = String(result.distance)
         cell.accessoryType = .disclosureIndicator
         
         return cell

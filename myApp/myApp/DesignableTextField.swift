@@ -22,10 +22,10 @@ class DesignableTextField: UITextField {
         if let image = leftImage {
             leftViewMode = .always
             
-            let imageView = UIImageView(frame: CGRect(x: 5, y: 0, width: 20, height: 20))
+            let imageView = UIImageView(frame: CGRect(x: 12, y: 0, width: 34, height: 29))
             imageView.image = image
             
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 58, height: 20))
             view.addSubview(imageView)
             leftView = view
             
