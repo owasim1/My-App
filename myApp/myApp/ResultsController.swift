@@ -25,9 +25,9 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
         
     }
-    
-    @IBAction func showOnMapPressed(_ sender: Any) {
-        performSegue(withIdentifier: "restaurantsToMap", sender: self)
+    @IBAction func mapTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "restaurantsToMap", sender: nil)
     }
     
     
@@ -130,9 +130,16 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         return cell
     }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
+    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView(frame: .zero)        
     }
 }

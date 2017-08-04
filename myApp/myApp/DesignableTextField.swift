@@ -28,7 +28,11 @@ class DesignableTextField: UITextField {
             updateView()
         }
     }
-    
+    @IBInspectable var rightPadding : CGFloat = 0{
+        didSet{
+            updateView()
+        }
+    }
     
     func updateView(){
         
@@ -38,9 +42,9 @@ class DesignableTextField: UITextField {
             let imageView = UIImageView(frame: CGRect(x: leftPadding, y: upperPadding, width: 34, height: 29))
             imageView.image = image
             
-            let width = 50 + leftPadding
+            let width = rightPadding + leftPadding
             
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: rightPadding, height: 20))
             view.addSubview(imageView)
             leftView = view
             

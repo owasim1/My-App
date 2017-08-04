@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 
-class SearchPageController: UIViewController, CLLocationManagerDelegate {
+class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     let locationManager = CLLocationManager()
     
@@ -37,32 +37,42 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func findButtonTapped(_ sender: Any) {
         
-        if Double(budgetTextField.text!) == 0 {
-            let alertMinBudget = UIAlertController(title: "Attention!", message: "You need to put in a value over $0!", preferredStyle: UIAlertControllerStyle.alert)
+        if Double(budgetTextField.text!) == nil{
+            let alertMinBudget = UIAlertController(title: "Bro!", message: "You need to put in a value in the budget field!", preferredStyle: UIAlertControllerStyle.alert)
             alertMinBudget.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertMinBudget, animated: true, completion: nil)
         }
         else{
-        findButton.isUserInteractionEnabled = false
-        
-        loadingDataIndicator.isHidden = false
-        loadingDataIndicator.startAnimating()
-        self.navigationController?.isNavigationBarHidden = true
-        loadScreenView.isHidden = false
-            
-        getFinalResults { (didComplete) in
-            if didComplete
-            {
-                self.loadingDataIndicator.isHidden = true
-                self.loadScreenView.isHidden = true
-                self.performSegue(withIdentifier: "toResultsPage", sender: self)
-                self.navigationController?.isNavigationBarHidden = false
+            if Double(budgetTextField.text!) == 0 {
+                let alertMinBudget = UIAlertController(title: "Bro!", message: "You need to put in a value over $0!", preferredStyle: UIAlertControllerStyle.alert)
+                alertMinBudget.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertMinBudget, animated: true, completion: nil)
+            }
+            else{
+                findButton.isUserInteractionEnabled = false
+                
+                loadingDataIndicator.isHidden = false
+                loadingDataIndicator.startAnimating()
+                self.navigationController?.isNavigationBarHidden = true
+                loadScreenView.isHidden = false
+                
+                getFinalResults { (didComplete) in
+                    if didComplete
+                    {
+                        self.loadingDataIndicator.isHidden = true
+                        self.loadScreenView.isHidden = true
+                        self.performSegue(withIdentifier: "toResultsPage", sender: self)
+                    }
+                }
             }
         }
-      }
     }
     
     @IBOutlet weak var loadScreenView: UIView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -75,19 +85,50 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        moveTextField(textField: foodItemTextField, moveDistance: -20, up: true)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        moveTextField(textField: foodItemTextField, moveDistance: -20, up: false)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func moveTextField(textField: UITextField, moveDistance: Int, up: Bool){
+        let moveDuration = 0.3
+        let movement = CGFloat(up ? moveDistance : -moveDistance)
+        
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        foodItemTextField.delegate = self
+        
         loadScreenView.isHidden = true
         
+        self.navigationController?.isNavigationBarHidden = true
+        
+        findButton.layer.cornerRadius = 5
+        findButton.layer.borderWidth = 0
+        findButton.layer.borderColor = UIColor.clear.cgColor
+        
         self.hideKeyboard()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        budgetTextField.leftViewMode = .always
-        
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -106,10 +147,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate {
     
     func textFieldDidChange(textField: UITextField)
     {
-//        if !textField.text!.lowercased().hasPrefix("sandwiches")
-//        {
-            textField.text = textField.text!.replacingOccurrences(of: " ", with: "")
-        //}
+        textField.text = textField.text!.replacingOccurrences(of: " ", with: "")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
