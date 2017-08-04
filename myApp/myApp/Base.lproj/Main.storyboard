@@ -291,24 +291,15 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsTableViewCell" rowHeight="95" id="wIk-7O-28P" customClass="ResultsTableViewCell" customModule="myApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="95"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsTableViewCell" rowHeight="50" id="wIk-7O-28P" customClass="ResultsTableViewCell" customModule="myApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wIk-7O-28P" id="eYr-ut-WKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkl-wo-hwz">
                                                     <rect key="frame" x="8" y="8" width="320" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVP-lb-SuW">
-                                                    <rect key="frame" x="8" y="37" width="136" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="136" id="oDb-uM-rqh"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -325,10 +316,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lkl-wo-hwz" firstAttribute="top" secondItem="eYr-ut-WKd" secondAttribute="topMargin" id="7YA-qV-d91"/>
-                                                <constraint firstItem="nVP-lb-SuW" firstAttribute="top" secondItem="lkl-wo-hwz" secondAttribute="bottom" constant="8" symbolic="YES" id="Bvc-UN-OQ4"/>
                                                 <constraint firstItem="lkl-wo-hwz" firstAttribute="leading" secondItem="eYr-ut-WKd" secondAttribute="leadingMargin" id="Ehs-oI-fld"/>
                                                 <constraint firstItem="rR1-IA-jeV" firstAttribute="top" secondItem="eYr-ut-WKd" secondAttribute="topMargin" constant="15" id="c62-dg-Akn"/>
-                                                <constraint firstItem="lkl-wo-hwz" firstAttribute="leading" secondItem="nVP-lb-SuW" secondAttribute="leading" id="oQ7-Lt-ezh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="rR1-IA-jeV" secondAttribute="trailing" constant="67" id="ojm-Go-51O"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lkl-wo-hwz" secondAttribute="trailing" constant="39" id="rYZ-ru-ZAC"/>
                                             </constraints>
@@ -336,7 +325,6 @@
                                         <connections>
                                             <outlet property="distanceLabel" destination="rR1-IA-jeV" id="Gij-Hh-D3d"/>
                                             <outlet property="nameOfRestaurantLabel" destination="lkl-wo-hwz" id="WVh-eo-J5G"/>
-                                            <outlet property="restaurantTypeLabel" destination="nVP-lb-SuW" id="Xdi-ku-Ani"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -358,10 +346,11 @@
                         <barButtonItem key="leftBarButtonItem" image="back_arrow" id="mp3-oR-g4b">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="o25-i9-Kmn" kind="unwind" unwindAction="unwindToResultsControllerWithSegue:" id="dsR-HP-tg4"/>
+                                <segue destination="o25-i9-Kmn" kind="unwind" identifier="toSearchScreen" unwindAction="unwindToSearchScreenFromResults:" id="ZNc-7J-Xbe"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="VUU-vw-heH">
+                        <barButtonItem key="rightBarButtonItem" image="Map" id="VUU-vw-heH">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="mapTapped:" destination="FlO-za-2EL" id="r6R-yW-8kJ"/>
                             </connections>
@@ -402,6 +391,7 @@
     <resources>
         <image name="Budget" width="34" height="29"/>
         <image name="Cuisine" width="25" height="28"/>
+        <image name="Map" width="26" height="26"/>
         <image name="SMARTEATS FINAL" width="286" height="93"/>
         <image name="back_arrow" width="9" height="16"/>
     </resources>

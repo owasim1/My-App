@@ -70,6 +70,10 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     
     @IBOutlet weak var loadScreenView: UIView!
     
+    @IBAction func unwindToSearchScreenFromResults(_ segue: UIStoryboardSegue) {
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
