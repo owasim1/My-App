@@ -288,7 +288,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OZT-Jd-8mY">
-                                <rect key="frame" x="0.0" y="20" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="10" width="375" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="resultsTableViewCell" rowHeight="50" id="wIk-7O-28P" customClass="ResultsTableViewCell" customModule="myApp" customModuleProvider="target">
@@ -333,13 +333,38 @@
                                     <outlet property="delegate" destination="FlO-za-2EL" id="KEf-oU-SQC"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-Jw-U2b">
+                                <rect key="frame" x="0.0" y="10" width="375" height="593"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any restaurants in our database in your area." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxY-ey-nzZ">
+                                        <rect key="frame" x="20" y="150" width="335" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="vDR-sx-8kR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oxY-ey-nzZ" secondAttribute="trailing" constant="20" id="Bqf-YI-JQv"/>
+                                    <constraint firstItem="oxY-ey-nzZ" firstAttribute="top" secondItem="9JD-Jw-U2b" secondAttribute="top" constant="150" id="JQ5-ai-7XE"/>
+                                    <constraint firstItem="oxY-ey-nzZ" firstAttribute="leading" secondItem="9JD-Jw-U2b" secondAttribute="leading" constant="20" id="SDj-rT-pP5"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.28627450980392155" green="0.72941176470588232" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="OZT-Jd-8mY" secondAttribute="bottom" constant="20" symbolic="YES" id="VbB-66-YOi"/>
+                            <constraint firstItem="9JD-Jw-U2b" firstAttribute="centerY" secondItem="N80-Sa-XOT" secondAttribute="centerY" constant="5" id="QIZ-w1-XOu"/>
+                            <constraint firstItem="9JD-Jw-U2b" firstAttribute="leading" secondItem="N80-Sa-XOT" secondAttribute="leading" id="Us3-Yd-RY9"/>
+                            <constraint firstAttribute="bottom" secondItem="OZT-Jd-8mY" secondAttribute="bottom" id="VbB-66-YOi"/>
+                            <constraint firstItem="9JD-Jw-U2b" firstAttribute="centerX" secondItem="N80-Sa-XOT" secondAttribute="centerX" id="YDc-Cx-yBv"/>
                             <constraint firstItem="OZT-Jd-8mY" firstAttribute="leading" secondItem="N80-Sa-XOT" secondAttribute="leading" id="cAq-BK-N6U"/>
-                            <constraint firstItem="OZT-Jd-8mY" firstAttribute="top" secondItem="N80-Sa-XOT" secondAttribute="top" constant="20" symbolic="YES" id="cab-jJ-gTr"/>
+                            <constraint firstItem="OZT-Jd-8mY" firstAttribute="top" secondItem="N80-Sa-XOT" secondAttribute="top" constant="10" id="cab-jJ-gTr"/>
                             <constraint firstAttribute="trailing" secondItem="OZT-Jd-8mY" secondAttribute="trailing" id="fJR-FT-STx"/>
+                            <constraint firstAttribute="trailing" secondItem="9JD-Jw-U2b" secondAttribute="trailing" id="mAN-Vc-ZgD"/>
+                            <constraint firstItem="mkQ-5F-gSW" firstAttribute="top" secondItem="9JD-Jw-U2b" secondAttribute="bottom" id="xe4-a2-1ki"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="zdL-KJ-Qeg">
@@ -357,6 +382,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noResultsLabel" destination="oxY-ey-nzZ" id="Y3L-Jc-d7a"/>
+                        <outlet property="noResultsView" destination="9JD-Jw-U2b" id="D6E-0t-93z"/>
                         <outlet property="tableView" destination="OZT-Jd-8mY" id="UWh-5U-flR"/>
                         <segue destination="pnK-cO-SYC" kind="show" identifier="toTheRestaurantMenu" id="Fn1-KT-TQn"/>
                         <segue destination="617-oR-PX7" kind="show" identifier="restaurantsToMap" id="i8q-Xj-apk"/>
@@ -365,7 +392,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udf-AG-hdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="o25-i9-Kmn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1815.9420289855075" y="121.46739130434784"/>
+            <point key="canvasLocation" x="1815.2" y="120.98950524737631"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bzp-ck-feq">

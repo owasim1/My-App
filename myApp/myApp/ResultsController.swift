@@ -18,9 +18,15 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     var preferredType: String!
     
+    var cellCount = 0
+    
     var filteredResults = [Restaurant]()
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var noResultsLabel: UILabel!
+    
+    @IBOutlet weak var noResultsView: UIView!
     
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
         
@@ -60,9 +66,11 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
                     }
                 }
             }
+            cellCount = filteredRestaurants.count
             return filteredRestaurants.count
         }
         else{
+            cellCount = results.count
             return results.count
         }
     }
@@ -125,18 +133,28 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         cell.nameOfRestaurantLabel.text = result.name
-        cell.restaurantTypeLabel.text = result.restaurantType
 //        cell.distanceLabel?.text = String(result.distance)
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+        noResultsView.isHidden = true
+        noResultsLabel.isHidden = true
+        if cellCount == 0{
+            noResultsView.isHidden = false
+            noResultsLabel.isHidden = false
+        }
+        else{
+            noResultsView.isHidden = true
+            noResultsLabel.isHidden = true
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView(frame: .zero)        
+        tableView.tableFooterView = UIView(frame: .zero)
     }
 }

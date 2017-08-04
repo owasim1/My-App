@@ -14,10 +14,9 @@ class ResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var restaurantTypeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
