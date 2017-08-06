@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     var restuarantTitle: String?
     var menuCategorySection = [MenuCategory]()
@@ -23,13 +23,26 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
             }
     }
     
+    @IBAction func unwindToMenuController(_ segue: UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func unwindFromMap(segue:UIStoryboardSegue) {
+    }
+    
+    @IBAction func mapTapped(_ sender: Any) {
+        performSegue(withIdentifier: "toMapView", sender: nil)
+    }
+    
     @IBAction func showButton(_ sender: Any) {
         performSegue(withIdentifier: "toMapView", sender: self)
     }
-    
+
     
     @IBOutlet weak var restaurantTitleLabel: UILabel!
     @IBOutlet weak var displayMenuTableView: UITableView!
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapView"{
@@ -44,8 +57,7 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         
         if let title = restuarantTitle
         {
-            restaurantTitleLabel.text = title
-            
+            self.navigationItem.title = title
         }
     }
     
@@ -77,8 +89,9 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         let item = items.items?[indexPath.row]
             
         cell.itemNameLabel.text = item?.name
-        cell.itemPriceLabel.text = String(describing: item!.price)
+        cell.itemPriceLabel.text = "$" + String(describing: item!.price)
         
         return cell
     }
+
 }

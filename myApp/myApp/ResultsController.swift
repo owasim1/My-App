@@ -8,8 +8,15 @@
 
 import UIKit
 import XLPagerTabStrip
+import CoreLocation
+import GoogleMaps
 
-class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
+    var mapView : GMSMapView?
     
     var results = [Restaurant]()
     var restaurantName: String = ""
@@ -21,6 +28,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     var cellCount = 0
     
     var filteredResults = [Restaurant]()
+    
+    @IBOutlet weak var mapButton: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,6 +44,10 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func mapTapped(_ sender: Any) {
         
         performSegue(withIdentifier: "restaurantsToMap", sender: nil)
+    }
+    
+    @IBAction func unwindFromMap(segue:UIStoryboardSegue) {
+        
     }
     
     
@@ -125,36 +138,50 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
             result = filteredRestaurants[row]
-            filteredResults = filteredRestaurants
+            filteredResults = filteredRestaurants.sorted{ $0.distance < $1.distance }
         }
         else{
             result = results[row]
-            filteredResults = results
+                        filteredResults = results.sorted{ $0.distance < $1.distance }
         }
         
+        let restaurantCoordinate = CLLocation(latitude: result.latitude, longitude: result.longitude)
+        result.distance = Int(restaurantCoordinate.distance(from: currentLocation!))
+
+        
         cell.nameOfRestaurantLabel.text = result.name
-//        cell.distanceLabel?.text = String(result.distance)
+        cell.distanceLabel?.text = String(result.distance)
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        noResultsView.isHidden = true
-        noResultsLabel.isHidden = true
+
+//        noResultsView.isHidden = true
+//        noResultsLabel.isHidden = true
         if cellCount == 0{
-            noResultsView.isHidden = false
-            noResultsLabel.isHidden = false
+            self.navigationController?.isNavigationBarHidden = true
+            tableView.isHidden = true
+//            noResultsView.isHidden = false
+//            noResultsLabel.isHidden = false
+            mapButton.isEnabled = false
+            mapButton.accessibilityElementsHidden = true
         }
         else{
-            noResultsView.isHidden = true
-            noResultsLabel.isHidden = true
-            
+            self.navigationController?.isNavigationBarHidden = false
+            tableView.isHidden = false
+//            noResultsView.isHidden = true
+//            noResultsLabel.isHidden = true
+            mapButton.isEnabled = true
+            mapButton.accessibilityElementsHidden = false
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.reloadData()
         tableView.tableFooterView = UIView(frame: .zero)
     }
 }

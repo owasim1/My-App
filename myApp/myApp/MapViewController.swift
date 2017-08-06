@@ -21,7 +21,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var currentLocation: CLLocation?
     
     var mapView: GMSMapView!
-
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindFromMap", sender: self)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,15 +35,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.distanceFilter = 50
-//        locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
         let camera = GMSCameraPosition.camera(withLatitude: resultsOnMap[0].latitude, longitude:resultsOnMap[0].longitude, zoom: 13)
         mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         
         for result in resultsOnMap{
-            navigationItem.title = markerName
-
+            if resultsOnMap.count == 1 {
+                navigationItem.title = markerName
+            }
+            else{
+                navigationItem.title = "All Restaurants"
+            }
             let restaurantLocation = CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude)
             let marker = GMSMarker(position: restaurantLocation)
             marker.title = result.name

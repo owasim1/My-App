@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,29 +22,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SMARTEATS FINAL" translatesAutoresizingMaskIntoConstraints="NO" id="2oT-gF-LyM">
-                                <rect key="frame" x="59.5" y="287" width="286" height="93"/>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SMARTEATS_edit 2" translatesAutoresizingMaskIntoConstraints="NO" id="2oT-gF-LyM">
+                                <rect key="frame" x="65.5" y="215" width="244" height="177"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="2oT-gF-LyM" secondAttribute="height" multiplier="286:93" id="cBi-Oj-VYw"/>
+                                    <constraint firstAttribute="width" secondItem="2oT-gF-LyM" secondAttribute="height" multiplier="244:177" id="oeE-AD-Mmn"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.28627450980000002" green="0.72941176470000002" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.62352941179999999" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="2oT-gF-LyM" secondAttribute="trailing" constant="13.5" id="CV8-O9-pXr"/>
-                            <constraint firstItem="2oT-gF-LyM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="43.5" id="Tcv-rC-F72"/>
-                            <constraint firstItem="2oT-gF-LyM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VJz-6T-N9i"/>
-                            <constraint firstItem="2oT-gF-LyM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="15" id="nxc-6b-iAc"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="2oT-gF-LyM" secondAttribute="bottom" constant="287" id="vTW-Yw-dX3"/>
+                            <constraint firstItem="2oT-gF-LyM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="C90-am-jkO"/>
+                            <constraint firstItem="2oT-gF-LyM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eMJ-Zg-ckF"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="267"/>
+            <point key="canvasLocation" x="629.60000000000002" y="266.71664167916043"/>
         </scene>
     </scenes>
     <resources>
-        <image name="SMARTEATS FINAL" width="286" height="93"/>
+        <image name="SMARTEATS_edit 2" width="244" height="171"/>
     </resources>
 </document>

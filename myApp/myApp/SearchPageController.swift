@@ -86,6 +86,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
             
             destinationController.results = restaurants
             destinationController.preferredType = trimmedString.lowercased()
+            destinationController.currentLocation = locValue
         }
     }
     
