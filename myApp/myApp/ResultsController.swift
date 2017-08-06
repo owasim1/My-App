@@ -150,11 +150,16 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         let restaurantCoordinate = CLLocation(latitude: result.latitude, longitude: result.longitude)
         result.distance = Double(restaurantCoordinate.distance(from: currentLocation!))
 
+        let distanceInMiles = result.distance * 0.000621371
+        
+        if let lowerBound = result.name.range(of: "-")?.lowerBound {
+            result.name = result.name.substring(to: lowerBound)
+        }
         
         cell.nameOfRestaurantLabel.text = result.name
-        let distanceInMiles = result.distance * 0.000621371
         cell.distanceLabel?.text = "\(distanceInMiles.truncate(places: 1)) miles"
-        cell.restaurantAddress.text = "\(result.streetAddress), \(result.city), \(result.state)"
+        cell.restaurantAddress.text = "\(result.streetAddress), \(result.city)"
+        
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "front_arrow (2)"))
         cell.tintColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
