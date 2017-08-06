@@ -14,6 +14,6 @@ import SwiftyJSON
 class Result {
     
     var nameOfRestaurant: String = ""
-    var distance: Int = 0
+    var distance: Double = 0.0
     
 }

@@ -33,9 +33,11 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var noResultsStack: UIStackView!
     
-    @IBOutlet weak var noResultsView: UIView!
+    @IBOutlet weak var noResultsImage: UIImageView!
+    
+    @IBOutlet weak var takeMeBackButton: UIButton!
     
     @IBAction func unwindToResultsController(segue: UIStoryboardSegue){
         
@@ -146,34 +148,48 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         let restaurantCoordinate = CLLocation(latitude: result.latitude, longitude: result.longitude)
-        result.distance = Int(restaurantCoordinate.distance(from: currentLocation!))
+        result.distance = Double(restaurantCoordinate.distance(from: currentLocation!))
 
         
         cell.nameOfRestaurantLabel.text = result.name
-        cell.distanceLabel?.text = String(result.distance)
+        let distanceInMiles = result.distance * 0.000621371
+        cell.distanceLabel?.text = "\(distanceInMiles.truncate(places: 1)) miles"
+        cell.restaurantAddress.text = "\(result.streetAddress), \(result.city), \(result.state)"
         cell.accessoryType = .disclosureIndicator
+        cell.accessoryView = UIImageView(image: #imageLiteral(resourceName: "front_arrow (2)"))
+        cell.tintColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         
         return cell
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+        
+        noResultsImage.isHidden = true
+        noResultsStack.isHidden = true
+        takeMeBackButton.isHidden = true
+        takeMeBackButton.isUserInteractionEnabled = false
 
-//        noResultsView.isHidden = true
-//        noResultsLabel.isHidden = true
         if cellCount == 0{
             self.navigationController?.isNavigationBarHidden = true
             tableView.isHidden = true
-//            noResultsView.isHidden = false
-//            noResultsLabel.isHidden = false
             mapButton.isEnabled = false
             mapButton.accessibilityElementsHidden = true
+            noResultsImage.isHidden = false
+            noResultsStack.isHidden = false
+            takeMeBackButton.isHidden = false
+            takeMeBackButton.isUserInteractionEnabled = true
         }
         else{
             self.navigationController?.isNavigationBarHidden = false
             tableView.isHidden = false
-//            noResultsView.isHidden = true
-//            noResultsLabel.isHidden = true
+            noResultsImage.isHidden = true
+            noResultsStack.isHidden = true
+            takeMeBackButton.isHidden = true
+            takeMeBackButton.isUserInteractionEnabled = false
             mapButton.isEnabled = true
             mapButton.accessibilityElementsHidden = false
         }
@@ -181,7 +197,19 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        takeMeBackButton.layer.cornerRadius = 5
+        takeMeBackButton.layer.borderWidth = 0
+        takeMeBackButton.layer.borderColor = UIColor.clear.cgColor
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.separatorColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        
+    }
+}
+
+extension Double
+{
+    func truncate(places : Int)-> Double
+    {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
     }
 }

@@ -38,13 +38,13 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     @IBAction func findButtonTapped(_ sender: Any) {
         
         if Double(budgetTextField.text!) == nil{
-            let alertMinBudget = UIAlertController(title: "Bro!", message: "You need to put in a value in the budget field!", preferredStyle: UIAlertControllerStyle.alert)
+            let alertMinBudget = UIAlertController(title: "Oops!", message: "Please enter a valid budget.", preferredStyle: UIAlertControllerStyle.alert)
             alertMinBudget.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alertMinBudget, animated: true, completion: nil)
         }
         else{
             if Double(budgetTextField.text!) == 0 {
-                let alertMinBudget = UIAlertController(title: "Bro!", message: "You need to put in a value over $0!", preferredStyle: UIAlertControllerStyle.alert)
+                let alertMinBudget = UIAlertController(title: "Oops!", message: "You need to enter a value over $0.", preferredStyle: UIAlertControllerStyle.alert)
                 alertMinBudget.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alertMinBudget, animated: true, completion: nil)
             }
@@ -96,11 +96,11 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        moveTextField(textField: foodItemTextField, moveDistance: -20, up: true)
+        moveTextField(textField: foodItemTextField, moveDistance: -35, up: true)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        moveTextField(textField: foodItemTextField, moveDistance: -20, up: false)
+        moveTextField(textField: foodItemTextField, moveDistance: -35, up: false)
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
