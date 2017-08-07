@@ -67,53 +67,14 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        var filteredRestaurants = [Restaurant]()
-        
-        if preferredType != ""{
-            for a in 0..<results.count{
-                for b in 0..<results[a].foodType!.count {
-                    if results[a].foodType![b].contains(preferredType) {
-                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
-                            filteredRestaurants.append(results[a])
-
-                        }
-                        
-                    }
-                }
-            }
-            cellCount = filteredRestaurants.count
-            return filteredRestaurants.count
-        }
-        else{
-            cellCount = results.count
-            return results.count
-        }
+        return filteredResults.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        
-        var filteredRestaurants = [Restaurant]()
-        
-        if preferredType != "" {
-            for a in 0..<results.count{
-                for b in 0..<results[a].foodType!.count {
-                    if results[a].foodType![b].contains(preferredType) {
-                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
-                            filteredRestaurants.append(results[a])
-                            
-                        }
-                    }
-                }
-            }
-            selectedRestaurant = filteredRestaurants[indexPath.row]
-            restaurantName = filteredRestaurants[indexPath.row].name
-        }
-        else{
-            selectedRestaurant = results[indexPath.row]
-            restaurantName = results[indexPath.row].name
 
-        }
+        selectedRestaurant = filteredResults[indexPath.row]
+        restaurantName = filteredResults[indexPath.row].name
         
         performSegue(withIdentifier: "toTheRestaurantMenu", sender: self)
     }
@@ -125,30 +86,10 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         let row = indexPath.row
         
         let result: Restaurant
+
+        result = filteredResults[row]
         
-        var filteredRestaurants = [Restaurant]()
         
-        if preferredType != ""{
-            for a in 0..<results.count{
-                for b in 0..<results[a].foodType!.count {
-                    if results[a].foodType![b].contains(preferredType) {
-                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
-                            filteredRestaurants.append(results[a])
-                            
-                        }
-                    }
-                }
-            }
-            result = filteredRestaurants[row]
-            filteredResults = filteredRestaurants.sorted{ $0.distance < $1.distance }
-        }
-        else{
-            result = results[row]
-                        filteredResults = results.sorted{ $0.distance < $1.distance }
-        }
-        
-        let restaurantCoordinate = CLLocation(latitude: result.latitude, longitude: result.longitude)
-        result.distance = Double(restaurantCoordinate.distance(from: currentLocation!))
 
         let distanceInMiles = result.distance * 0.000621371
         
@@ -177,6 +118,40 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         noResultsStack.isHidden = true
         takeMeBackButton.isHidden = true
         takeMeBackButton.isUserInteractionEnabled = false
+        
+        
+        
+        
+        var filteredRestaurants = [Restaurant]()
+        if preferredType != ""{
+            for a in 0..<results.count{
+                for b in 0..<results[a].foodType!.count {
+                    if results[a].foodType![b].contains(preferredType) {
+                        if !filteredRestaurants.contains(where: {$0.name == results[a].name}){
+                            filteredRestaurants.append(results[a])
+                            
+                        }
+                    }
+                }
+            }
+            filteredResults = filteredRestaurants
+        }
+        
+        else{
+            filteredResults = results
+            
+        }
+        
+        for result in filteredResults{
+            let restaurantCoordinate = CLLocation(latitude: result.latitude, longitude: result.longitude)
+            result.distance = Double(restaurantCoordinate.distance(from: currentLocation!))
+
+        }
+        
+        filteredResults = filteredResults.sorted{ $0.distance < $1.distance }
+        
+        cellCount = filteredResults.count
+
 
         if cellCount == 0{
             self.navigationController?.isNavigationBarHidden = true
@@ -198,6 +173,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
             mapButton.isEnabled = true
             mapButton.accessibilityElementsHidden = false
         }
+        
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -207,6 +184,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         takeMeBackButton.layer.borderColor = UIColor.clear.cgColor
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.separatorColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        tableView.reloadData()
+        
         
         
     }

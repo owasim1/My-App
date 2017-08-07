@@ -123,6 +123,8 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     {
         super.viewDidLoad()
         
+        
+        
         foodItemTextField.delegate = self
         
         loadScreenView.isHidden = true

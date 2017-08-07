@@ -116,7 +116,7 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         
         let items = menuCategorySection[indexPath.section]
         let item = items.items?[indexPath.row]
-            
+        
         cell.itemNameLabel.text = item?.name
         cell.itemPriceLabel.text = "$ " + String(format: "%.2f", item!.price)
         
