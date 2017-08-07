@@ -98,7 +98,13 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         cell.nameOfRestaurantLabel.text = result.name
-        cell.distanceLabel?.text = "\(distanceInMiles.truncate(places: 1)) miles"
+        if distanceInMiles < 0.4 {
+            let distanceInMeters = distanceInMiles / 0.000621371
+            cell.distanceLabel?.text = "\(distanceInMeters.truncate(places: 1)) meters"
+        }
+        else{
+            cell.distanceLabel?.text = "\(distanceInMiles.truncate(places: 1)) miles"
+        }
         cell.restaurantAddress.text = "\(result.streetAddress), \(result.city)"
         
         cell.accessoryType = .disclosureIndicator

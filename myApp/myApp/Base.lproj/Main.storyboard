@@ -107,10 +107,10 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyw-pa-Fea">
-                                <rect key="frame" x="50" y="481.5" width="275" height="58.5"/>
+                                <rect key="frame" x="50" y="481.5" width="275" height="60"/>
                                 <color key="backgroundColor" red="0.74509803921568629" green="0.11764705882352941" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="cyw-pa-Fea" secondAttribute="height" multiplier="281:60" id="5i4-um-Nrd"/>
+                                    <constraint firstAttribute="width" secondItem="cyw-pa-Fea" secondAttribute="height" multiplier="281:60" constant="-6" id="5i4-um-Nrd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="24"/>
                                 <state key="normal" title="Search">
@@ -152,7 +152,7 @@
                             <constraint firstItem="HY8-uU-bz4" firstAttribute="top" secondItem="qj7-Ws-MUo" secondAttribute="bottom" constant="30" id="RfW-R2-39T">
                                 <variation key="heightClass=regular-widthClass=regular" constant="110"/>
                             </constraint>
-                            <constraint firstAttribute="bottomMargin" secondItem="cyw-pa-Fea" secondAttribute="bottom" constant="63" id="X5s-1G-Mz7">
+                            <constraint firstAttribute="bottomMargin" secondItem="cyw-pa-Fea" secondAttribute="bottom" constant="61.5" id="X5s-1G-Mz7">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="qj7-Ws-MUo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="imD-0S-yzo">
@@ -238,7 +238,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="itemPriceLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gW-hG-QDL">
-                                                    <rect key="frame" x="302" y="25" width="92" height="17"/>
+                                                    <rect key="frame" x="263.5" y="25" width="91.5" height="17"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -371,13 +371,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Restaurant" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkl-wo-hwz">
-                                                    <rect key="frame" x="20" y="12" width="376" height="21.5"/>
+                                                    <rect key="frame" x="20" y="12" width="337" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsP-RE-nQW">
-                                                    <rect key="frame" x="20" y="33.5" width="376" height="40"/>
+                                                    <rect key="frame" x="20" y="33.5" width="337" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Hmd-le-JVG"/>
                                                     </constraints>
@@ -386,7 +386,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-d1-I2W">
-                                                    <rect key="frame" x="19" y="76.5" width="376" height="14.5"/>
+                                                    <rect key="frame" x="19" y="76.5" width="337" height="14.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="distance 2" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-B9-XaU">
                                                             <rect key="frame" x="0.0" y="0.0" width="18.5" height="14.5"/>
@@ -395,7 +395,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rR1-IA-jeV">
-                                                            <rect key="frame" x="23.5" y="0.0" width="352.5" height="14.5"/>
+                                                            <rect key="frame" x="23.5" y="0.0" width="313.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
