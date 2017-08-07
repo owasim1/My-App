@@ -98,11 +98,11 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     func textFieldDidBeginEditing(_ textField: UITextField) {
         moveTextField(textField: foodItemTextField, moveDistance: -35, up: true)
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         moveTextField(textField: foodItemTextField, moveDistance: -35, up: false)
     }
-
+    
     @nonobjc func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -173,11 +173,11 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
     {
         findButton.isUserInteractionEnabled = true
     }
-
+    
     func getFinalResults(completionHandler: @escaping (Bool) -> Void) {
-
+        
         budgetTextField.keyboardType = UIKeyboardType.numberPad
-
+        
         let dispatchGroup = DispatchGroup()
         
         if let currentLocation = locValue
