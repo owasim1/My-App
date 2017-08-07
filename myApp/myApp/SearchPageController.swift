@@ -103,7 +103,7 @@ class SearchPageController: UIViewController, CLLocationManagerDelegate, UITextF
         moveTextField(textField: foodItemTextField, moveDistance: -35, up: false)
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    @nonobjc func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
