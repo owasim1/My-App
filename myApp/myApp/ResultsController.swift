@@ -208,13 +208,8 @@ class ResultsController: UIViewController, UITableViewDelegate, UITableViewDataS
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.separatorColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
         
+        
     }
 }
 
-extension Double
-{
-    func truncate(places : Int)-> Double
-    {
-        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
-    }
-}
+

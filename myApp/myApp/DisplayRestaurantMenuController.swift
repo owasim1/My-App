@@ -55,6 +55,9 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        displayMenuTableView.tableFooterView = UIView(frame: .zero)
+        displayMenuTableView.separatorColor = UIColor(red: 190.0/255.0, green: 30.0/255.0, blue: 45.0/255.0, alpha: 1.0)
+        
         if let title = restuarantTitle
         {
             self.navigationItem.title = title
@@ -69,13 +72,39 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         return menuCategorySection[section].name
     }
     
-//    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-//        var categoryName = [String]()
-//        for category in menuCategorySection{
-//            categoryName.append(category.name)
-//        }
-//        return categoryName
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let headerView = UIView()
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.textAlignment = NSTextAlignment.center
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let shadowView = UIView()
+//        
+//        let gradient = CAGradientLayer()
+//        gradient.frame.size = CGSize(width: tableView.bounds.width, height: 15)
+//        let stopColor = UIColor.gray.cgColor
+//        
+//        let startColor = UIColor.white.cgColor
+//        
+//        
+//        gradient.colors = [stopColor,startColor]
+//        
+//        
+//        gradient.locations = [0.0,0.8]
+//        
+//        shadowView.layer.addSublayer(gradient)
+//        
+//        
+//        return shadowView
 //    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuCategorySection[section].items?.count ?? 0
@@ -89,9 +118,20 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
         let item = items.items?[indexPath.row]
             
         cell.itemNameLabel.text = item?.name
-        cell.itemPriceLabel.text = "$" + String(describing: item!.price)
+        cell.itemPriceLabel.text = "$ " + String(format: "%.2f", item!.price)
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         
         return cell
     }
 
+}
+extension Double
+{
+    func truncate(places : Int)-> Double
+    {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
 }
