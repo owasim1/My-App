@@ -193,7 +193,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cZH-I1-YCX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9ea-m9-kI2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -505,6 +505,6 @@
         <image name="distance 2" width="18" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aLD-uC-wTq"/>
+        <segue reference="i8q-Xj-apk"/>
     </inferredMetricsTieBreakers>
 </document>
