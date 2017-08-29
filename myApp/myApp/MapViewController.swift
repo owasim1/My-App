@@ -13,6 +13,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate {
     
+    var restaurantData = Dictionary<String, Any>()
+    
     var resultsOnMap = [Restaurant]()
     
     var markerName = ""
@@ -50,6 +52,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             let restaurantLocation = CLLocationCoordinate2D(latitude: result.latitude, longitude: result.longitude)
             let marker = GMSMarker(position: restaurantLocation)
             marker.title = result.name
+            restaurantData["streetAddress"] = result.streetAddress
+            marker.userData = restaurantData
             marker.map = self.mapView
             
             view = self.mapView

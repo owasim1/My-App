@@ -73,33 +73,11 @@ class DisplayRestaurantMenuController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let headerView = UIView()
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: "Roboto-Medium", size: 14)
         header.textLabel?.textColor = UIColor.black
         header.textLabel?.textAlignment = NSTextAlignment.center
     }
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let shadowView = UIView()
-//        
-//        let gradient = CAGradientLayer()
-//        gradient.frame.size = CGSize(width: tableView.bounds.width, height: 15)
-//        let stopColor = UIColor.gray.cgColor
-//        
-//        let startColor = UIColor.white.cgColor
-//        
-//        
-//        gradient.colors = [stopColor,startColor]
-//        
-//        
-//        gradient.locations = [0.0,0.8]
-//        
-//        shadowView.layer.addSublayer(gradient)
-//        
-//        
-//        return shadowView
-//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 35
